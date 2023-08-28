@@ -4,7 +4,7 @@ Api url: 'https://api.themoviedb.org/3/movie/76341?api_key=d2b252c13bc8a9ed431ab
 Requisitos
 
 -Prioridad Alta (Must Have)
-  1-*Crear usuarios.
+  1-*Registrar usuarios.
   2-*Loguear y desloguear usuarios.
   3-*Mantener sesión abierta ante un cierre del browser o refresh.
 

@@ -1,0 +1,60 @@
+.register__main{
+  h2{
+    margin-bottom: 10px;
+    text-align: start;
+    text-transform: uppercase;
+  }
+  form{
+      width: 20em;
+      height: 26.6em;
+      display: flex;
+      flex-direction: column;
+      place-content: center;
+      padding: 30px;
+      background-color: rgba(49, 45, 45, 0.897);
+      border-radius: 3px;
+      box-shadow: 3px 5px 10px rgb(37, 37, 37);
+      overflow-y: auto;
+      label{
+        text-align: start;
+        margin: 3px 0;
+        font-size: 1.2rem;
+        text-decoration: underline;
+        transition: ease all .3s;
+        padding: 5px 0;
+        border-radius: 3px;
+        box-shadow: 0px 5px 10px rgb(19, 18, 18);
+        background-color: rgb(119, 61, 6);
+        p{
+          margin-left: 5px;
+        }
+      }
+       
+      label:hover {
+        box-shadow: 2px 5px 10px rgb(63, 63, 63);
+        background-color: rgb(155, 16, 16);
+        cursor: pointer;
+        
+      }
+  
+      input{
+        outline: none;
+        height: 4em;
+        border-radius: 3px;
+        box-shadow: 0px 5px 10px rgb(19, 18, 18);
+        margin-bottom:20px;
+        font-size: 1.3rem;
+        text-align: center;
+        border: none;
+        transition: ease all .3s;
+        color: white;
+        background-color: rgb(48, 40, 40);
+       
+      }
+      input:focus , input:hover{
+        box-shadow: 0px 5px 10px rgb(34, 3, 3);
+        background-color: rgb(68, 50, 50);
+  
+      }
+  }
+}

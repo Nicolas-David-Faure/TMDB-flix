@@ -1,30 +1,10 @@
 const express = require('express');
 
 const router = express.Router();
-const {Users, Movies} = require('../models');
+const userRouter = require('./user')
 
-router.get('/', (req, res) => {
-  
-});
+const { Movies} = require('../models');
 
-router.post('/', (req, res , next) => {
-  
-});
-
-router.get('/', (req,res)=>{
-  
-})
-
-router.post('/', (req, res) => {
-  
-})
-
-router.delete('/', (req, res) => {
-  
-
- 
-})
-
-
+router.use('/user', userRouter)
 
 module.exports = router;

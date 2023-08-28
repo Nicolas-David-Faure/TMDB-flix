@@ -9,7 +9,10 @@ const useAxiosGetData = (path) => {
   const fetchData = () => {
     axios.get(path)
       .then(response => setData(response.data))
-      .catch(err => console.error(err));
+      .catch(err => {
+        const status = err.response.status
+        setData(status)
+      });
   };
 
   useEffect(() => {

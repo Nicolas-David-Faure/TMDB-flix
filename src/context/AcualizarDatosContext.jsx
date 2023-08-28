@@ -1,14 +1,16 @@
 import React, { createContext, useContext, useState } from 'react';
-import useAxiosGetData from '../hooks/useAxiosGetData';
+
 import axios from 'axios';
+
+import useAxiosGetData from '../hooks/useAxiosGetData'
 
 const AcualizarDatosContext = createContext();
 
 export function AcualizarDatosContextProvider({ children }) {
-  const [users = [] , updateUsers] = useAxiosGetData('/api')
-  const [jobs = [] , updateJobs] = useAxiosGetData('/api/jobs')
-
+  const [users = [] , updateUsers] = useAxiosGetData('/api/user/all')
   const [sureToDelete, setSureToDelete] =  useState(null)
+  
+  const [userLogged, updateLoginUser] = useAxiosGetData('/api/user/me')
 
   const handleDeleteUser =(id , name, lastName)=>{
     axios.delete(`/api/users/${id}`)
@@ -25,12 +27,13 @@ export function AcualizarDatosContextProvider({ children }) {
 
   const values = {
     users,
-    jobs,
+    userLogged,
     sureToDelete,
     updateUsers,
-    updateJobs,
+  
     handleDeleteUser,
-    setSureToDelete
+    setSureToDelete,
+    updateLoginUser
   }
   return (
     <AcualizarDatosContext.Provider value={values}>
