@@ -12,7 +12,7 @@ const Header = () => {
 
   return (
     <header className='header__main'>
-      <Link to={'/'}>
+      <Link to={'/browse'}>
           <h1>TMDBFLIX</h1>
       </Link>
 

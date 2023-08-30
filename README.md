@@ -1,6 +1,12 @@
 
 Api url: 'https://api.themoviedb.org/3/movie/76341?api_key=d2b252c13bc8a9ed431ab7234dc8c253'
 
+
+const API_URL = 'https://api.themoviedb.org/3'
+const API_KEY = 'd2b252c13bc8a9ed431ab7234dc8c253'
+const IMAGE_PATH = 'https://image.tmdb.org/t/p/original'
+
+
 Requisitos
 
 A-Prioridad Alta (Must Have)

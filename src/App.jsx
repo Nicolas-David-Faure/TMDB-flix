@@ -7,11 +7,14 @@ import './App.scss'
 import Header from './components/header/Header'
 import AuthPanel from './components/header/AuthPanel'
 import MainContent from './components/mainContent/MainContent'
+
 function App() {
 
 
   return (
     <div className='app__main'>
+
+
       <Header />
       <main>
         <Routes>
@@ -19,6 +22,8 @@ function App() {
           <Route path='/*' element={<MainContent />}/>
         </Routes>
       </main>
+
+      <footer className='footer__main'></footer>
     </div>
   )
 }

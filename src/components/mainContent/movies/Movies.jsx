@@ -10,15 +10,17 @@ import './sass/movies.scss'
 import { useInfoFilmsContext } from '../../../context/InfoFilmsContext'
 import MoviesRecomended from './MoviesRecomended'
 import FilmsSearched from './FilmsSearched'
+import InfoDescription from './InfoDescription'
 
 
 const Movies = () => {
-  const { filmsSerched, setFilmsSerched } = useInfoFilmsContext()
+  const { filmsSerched, setFilmsSerched , filmDescription} = useInfoFilmsContext()
   
 
   
   return (
     <section className='movies__main'>
+      {filmDescription && <InfoDescription film={filmDescription} />}
     <Routes>
       <Route path='/browse' element={<MoviesRecomended />} />
       <Route path='/search' element={<FilmsSearched />} />

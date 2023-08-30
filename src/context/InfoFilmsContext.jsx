@@ -7,9 +7,19 @@ const InfoFilmsContext = createContext();
 
 export function InfoFilmsContextProvider({ children }) {
   const [filmsSerched, setFilmsSerched] = useState(null)
+  const [filmDescription, setFilmDescription] = useState(null)
+ 
+
+  const IMAGE_PATH = 'https://image.tmdb.org/t/p/original'
+
+
+
   const values = {
     filmsSerched,
-    setFilmsSerched
+    setFilmsSerched,
+    IMAGE_PATH,
+    setFilmDescription,
+    filmDescription
   }
   return (
     <InfoFilmsContext.Provider value={values}>
