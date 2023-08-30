@@ -1,3 +1,8 @@
+Para ejecutar la aplicación completa:
+---->1-Crear base de datos psql llamada 'tmdbflix'
+---->2-Para levantar el back-end ir a /api y npm satart
+---->3-Para levantar el front-end ir a /src y npm satart
+
 
 Api url: 'https://api.themoviedb.org/3/movie/76341?api_key=d2b252c13bc8a9ed431ab7234dc8c253'
 
@@ -5,6 +10,7 @@ Api url: 'https://api.themoviedb.org/3/movie/76341?api_key=d2b252c13bc8a9ed431ab
 const API_URL = 'https://api.themoviedb.org/3'
 const API_KEY = 'd2b252c13bc8a9ed431ab7234dc8c253'
 const IMAGE_PATH = 'https://image.tmdb.org/t/p/original'
+
 
 
 Requisitos

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 //routes
 import { Routes , Route } from 'react-router-dom'
 //styles
@@ -7,10 +7,13 @@ import './App.scss'
 import Header from './components/header/Header'
 import AuthPanel from './components/header/AuthPanel'
 import MainContent from './components/mainContent/MainContent'
+import axios from 'axios'
 
 function App() {
 
 
+
+  
   return (
     <div className='app__main'>
 

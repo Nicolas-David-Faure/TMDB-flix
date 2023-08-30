@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 //router
 import { Route , Routes } from 'react-router-dom'
 //axios
@@ -11,13 +11,22 @@ import { useInfoFilmsContext } from '../../../context/InfoFilmsContext'
 import MoviesRecomended from './MoviesRecomended'
 import FilmsSearched from './FilmsSearched'
 import InfoDescription from './InfoDescription'
+import axios from 'axios'
 
 
 const Movies = () => {
-  const { filmsSerched, setFilmsSerched , filmDescription} = useInfoFilmsContext()
+  const { filmsSerched, setFilmsSerched , filmDescription , setGenres} = useInfoFilmsContext()
   
 
-  
+  useEffect(()=>{
+    axios.get('/api/movie/genre')
+    .then(({data: {genres}})=>{
+      setGenres(genres)
+    })
+    .catch(err=>{
+      console.error(err)
+    })
+  },[])
   return (
     <section className='movies__main'>
       {filmDescription && <InfoDescription film={filmDescription} />}
