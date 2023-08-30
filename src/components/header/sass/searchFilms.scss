@@ -1,0 +1,38 @@
+@import '../../../assets/sass/_variables';
+
+.searchFilms__main{
+  height: 4em;
+  
+  padding: 0 10px;
+  border-radius: 3px;
+  border: 1px solid rgb(122, 117, 117);
+  box-shadow: 0px 0px 10px rgb(39, 38, 38);
+  display: flex;
+  place-content: center;
+
+  div{
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+          button{
+            place-content: center;
+            background-color: transparent;
+            display: flex;
+            margin-right: 5px;
+
+            img{
+              width: 30px;
+              height: 100%;
+            }
+          }
+          button:hover{
+            border: 1px solid rgb(73, 73, 73);
+          }
+    input{
+      outline: none;
+      height: 2.8rem;
+      text-align: center;
+      font-size: 1.2rem;
+    }
+  }
+}

@@ -2,11 +2,11 @@ import { useState } from 'react'
 //routes
 import { Routes , Route } from 'react-router-dom'
 //styles
-import './styles/App.scss'
+import './App.scss'
 //components
-import Header from '../components/Header'
-import AuthPanel from '../components/AuthPanel'
-import MainContent from '../components/MainContent'
+import Header from './components/header/Header'
+import AuthPanel from './components/header/AuthPanel'
+import MainContent from './components/mainContent/MainContent'
 function App() {
 
 

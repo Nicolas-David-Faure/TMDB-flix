@@ -1,7 +1,11 @@
 import React from 'react'
-import Nav from './Nav'
+//router
 import { Link } from 'react-router-dom'
+//styles
 import './sass/header.scss'
+//components
+import Nav from './Nav'
+import SearchFilms from './SearchFilms'
 
 const Header = () => {
 
@@ -11,6 +15,8 @@ const Header = () => {
       <Link to={'/'}>
           <h1>TMDBFLIX</h1>
       </Link>
+
+      <SearchFilms /> 
       <Nav />
     </header>
   )

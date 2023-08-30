@@ -1,12 +1,15 @@
 import React from 'react'
-import './sass/nav.scss'
+//router
 import { NavLink } from 'react-router-dom'
-import { useAcualizarDatosContext } from '../context/AcualizarDatosContext'
+import { useAcualizarDatosContext } from '../../context/AcualizarDatosContext'
+//axios
 import axios from 'axios'
+//styles
+import './sass/nav.scss'
 
 const Nav = () => {
   const { userLogged ,updateLoginUser } =  useAcualizarDatosContext()
-  const isLogged = typeof userLogged ==  'object' ? true : false;
+  const isLogged = typeof userLogged ==  'object' ? true : false; //is logged?
   const handleLogout=()=>{
     axios.post('/api/user/logout', {})
     .then(()=>{

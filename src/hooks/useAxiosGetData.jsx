@@ -1,5 +1,6 @@
 import React from 'react'
 import { useEffect , useState } from 'react'
+//axios
 import axios  from 'axios'
 
 
@@ -10,7 +11,7 @@ const useAxiosGetData = (path) => {
     axios.get(path)
       .then(response => setData(response.data))
       .catch(err => {
-        const status = err.response.status
+        const status = err.response?.status
         setData(status)
       });
   };

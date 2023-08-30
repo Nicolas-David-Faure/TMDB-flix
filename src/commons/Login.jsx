@@ -1,29 +1,28 @@
 import React, { useState } from 'react'
-import './sass/login.scss'
-import axios from 'axios'
+//router
 import { useAcualizarDatosContext } from '../context/AcualizarDatosContext'
 import { useNavigate } from 'react-router-dom'
+//axios
+import axios from 'axios'
+//styles
+import './sass/login.scss'
+//utils
+import cleanStateObj from '../utils/cleanSatateObj'
 
 const Login = () => {
   const [userInfo, setUserInfo] = useState({email: '', password: ''})
   const { updateLoginUser} = useAcualizarDatosContext()
   const navigate = useNavigate()
-  const handleSubmit =(e)=>{
-      e.preventDefault()
-      axios.post('/api/user/login', userInfo)
-      .then((res)=>{
 
-        setUserInfo(prevState=>{
-          let result = {}
-          for(let key in prevState){
-            result[key] = ''
-          }
-          return result
-        })
-        updateLoginUser()
-        navigate('/')
-      })
-    }
+  const handleSubmit =(e)=>{
+    e.preventDefault()
+    axios.post('/api/user/login', userInfo)
+    .then((res)=>{
+      setUserInfo(cleanStateObj)
+      updateLoginUser()
+      navigate('/browse')
+    })
+  }
 
   const handleChange = (e)=>{
     const inputValue = e.target.type !== 'number' ? e.target.value.toLowerCase() : e.target.value
@@ -41,7 +40,8 @@ const Login = () => {
           name="email" 
           id="register-email" 
           value={userInfo.email}
-          placeholder='Email'/>
+          placeholder='Email'
+          />
 
         <input 
           onChange={handleChange}

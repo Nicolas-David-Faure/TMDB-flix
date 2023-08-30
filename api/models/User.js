@@ -8,7 +8,6 @@ class User extends Model {
       .then((hash) => hash === this.password);
   }
 }
-
 User.init(
     {
       email: {

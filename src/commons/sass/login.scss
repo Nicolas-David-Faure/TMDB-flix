@@ -14,7 +14,6 @@
       border-radius: 3px;
       box-shadow: 3px 5px 10px rgb(37, 37, 37);
       overflow-y: auto;
-      
       place-content: center;
       input{
         outline: none;
@@ -28,12 +27,12 @@
         transition: ease all .3s;
         color: white;
         background-color: rgb(48, 40, 40);
-       
+
       }
       input:focus , input:hover{
         box-shadow: 0px 5px 10px rgb(34, 3, 3);
         background-color: rgb(68, 50, 50);
-  
+
       }
   }
 }
