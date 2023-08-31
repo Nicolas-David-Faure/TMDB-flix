@@ -21,7 +21,7 @@ const InfoDescription = ({ film }) => {
 
   const genresMovie = genres.filter((genre) => film.genre_ids.includes(genre.id));
 
-  let genresString = genresMovie.map(({name})=>(`${name}`)).toString()
+  let genresString = genresMovie.map(({name})=>(` ${name}`)).toString()
 
 
   useEffect(()=>{
@@ -29,8 +29,6 @@ const InfoDescription = ({ film }) => {
 
   },[])
   
-
-
 
   return (
     <span 

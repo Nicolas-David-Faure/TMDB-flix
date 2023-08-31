@@ -1,7 +1,7 @@
 
 const express = require("express");
 const router = express.Router();
-const { User , Movies } = require('../models');
+const { User , Movie } = require('../models');
 
 const { validateUser } = require('../middleware/auth')
 const { getAll , register , login , logout , getMe , secret } = require('../controllers/userControllers')
@@ -21,6 +21,9 @@ router.post('/logout',logout)
 router.get("/me", validateUser, getMe);
 
 router.get("/secret", validateUser,secret);
+
+
+
 
 router.use("/", function (req, res) {
   res.sendStatus(404);

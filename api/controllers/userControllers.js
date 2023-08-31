@@ -1,4 +1,4 @@
-const { User } = require('../models')
+const { User , Movies} = require('../models')
 const { generateToken } = require('../config/tokens')
 
 const getAll = (req , res)=>{
@@ -9,19 +9,19 @@ const getAll = (req , res)=>{
 
 const register = (req, res, next) => {
   const body = req.body;
-  console.log('post-->', body)
 
   User.create(body)
     .then((user) => {
       res.send(user);
     })
-    .catch(next);
+    .catch(err=>console.error(err));
 }
 
 const login = (req,res)=>{
   const{email,password}=req.body
   User.findOne({
-    where:{email}
+    where:{email},
+ 
     })
     .then(user=>{
       if(!user)res.sendStatus(401)

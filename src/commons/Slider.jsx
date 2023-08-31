@@ -3,9 +3,10 @@ import React from 'react'
 import './sass/slider.scss'
 //commons
 import Card from './Card'
+import { useAcualizarDatosContext } from '../context/AcualizarDatosContext'
 
 const Slider = ( { films } ) => {
-
+  const {userLogged} = useAcualizarDatosContext()
   
   return (
    
@@ -13,7 +14,7 @@ const Slider = ( { films } ) => {
 
       {
         films?.map((film)=>(
-          <Card film={film} key={film.id}/>
+          <Card user={userLogged} film={film} key={film.id}/>
         ))
       }
 

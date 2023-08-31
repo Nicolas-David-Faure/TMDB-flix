@@ -7,7 +7,7 @@ const AcualizarDatosContext = createContext();
 
 export function AcualizarDatosContextProvider({ children }) {
   const [sureToDelete, setSureToDelete] = useState(null)
-  
+
   const [users = [] , updateUsers] = useAxiosGetData('/api/user/all')
   const [userLogged, updateLoginUser] = useAxiosGetData('/api/user/me')
 

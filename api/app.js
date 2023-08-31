@@ -4,7 +4,7 @@ const routes = require("./routes");
 const db = require("./db");
 const models = require("./models");
 const envs = require("./config/envs");
-const cors= require('cors')
+const cors= require('cors');
 
 app.use(cors('*'))
 app.use(express.json());
