@@ -7,9 +7,9 @@ import './sass/mainContent.scss'
 import Start  from './Start'
 import Movies from './movies/Movies'
 const MainContent = () => {
-  const { userLogged } = useAcualizarDatosContext()
+  const { userLogged , userIsLogged } = useAcualizarDatosContext()
   
-  let userIsLogged = typeof userLogged === 'object' ? true : false;
+  
 
   return (
     <main className='mainContent__main'>

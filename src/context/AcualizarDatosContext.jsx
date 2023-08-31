@@ -10,7 +10,7 @@ export function AcualizarDatosContextProvider({ children }) {
 
   const [users = [] , updateUsers] = useAxiosGetData('/api/user/all')
   const [userLogged, updateLoginUser] = useAxiosGetData('/api/user/me')
-
+  let userIsLogged = typeof userLogged === 'object' ? true : false;
   const values = {
     users,
     userLogged,
@@ -18,6 +18,7 @@ export function AcualizarDatosContextProvider({ children }) {
     updateUsers,
     setSureToDelete,
     updateLoginUser,
+    userIsLogged
   }
   return (
     <AcualizarDatosContext.Provider value={values}>

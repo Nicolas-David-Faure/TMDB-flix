@@ -20,7 +20,7 @@ const Card = ({ user ,film }) => {
   const handleMouseEnter = () => { //active a setTimeOut whith some delay before define setIsHover to true 
     timeOut = setTimeout(() => {
       setIsHover(true);
-    }, 400);
+    }, 300);
   };
 
   const handleMouseLeave = () => { //when the mouse leave then clear the timeOut and define setIsHover to false

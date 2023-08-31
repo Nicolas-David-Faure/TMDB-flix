@@ -6,9 +6,10 @@ import './sass/header.scss'
 //components
 import Nav from './Nav'
 import SearchFilms from './SearchFilms'
+import { useAcualizarDatosContext } from '../../context/AcualizarDatosContext'
 
 const Header = () => {
-
+  const {userIsLogged} = useAcualizarDatosContext()
 
   return (
     <header className='header__main'>
@@ -16,7 +17,7 @@ const Header = () => {
           <h1>TMDBFLIX</h1>
       </Link>
 
-      <SearchFilms /> 
+      {userIsLogged && <SearchFilms />}
       <Nav />
     </header>
   )
