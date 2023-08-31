@@ -16,7 +16,7 @@ const AddToFavorite = ({ film , user}) => {
 
   const handleToggleIcon= async()=>{
     if(isFavorite === plusIcon){
-      await axios.post(`/api/favorites/add/${user.email}`, filmInfo)
+      await axios.post(`/api/favorites/add/${user?.email}`, filmInfo)
             .then(({data: arrFavorites})=>setFavorites(arrFavorites))
     }
     if(isFavorite === checkIcon) {
@@ -26,7 +26,7 @@ const AddToFavorite = ({ film , user}) => {
   }
 
   useEffect(()=>{
-     axios.get(`/api/favorites/${user.email}`)
+     axios.get(`/api/favorites/${user?.email}`)
       .then(({data:arrFavorites})=>setFavorites(arrFavorites))
       .catch(err=>console.error(err))
       .finally(()=>{

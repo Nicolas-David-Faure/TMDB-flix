@@ -29,7 +29,7 @@ const Card = ({ user ,film }) => {
   };
 
 
-  
+
   return (
     <motion.div                            
       layout
@@ -59,7 +59,7 @@ const Card = ({ user ,film }) => {
           }}
             >
             <div className='card__btn_cont'>
-              <AddToFavorite user={user} film={film}/>
+              {(user && film) && <AddToFavorite user={user} film={film}/>}
               <div className='card__show_description' onClick={()=>setFilmDescription(film)}>
                 <img src={arrowDonwIcon} alt="description" />
               </div> {/*set film to a global state context to use on infoDescription.jsx*/}
