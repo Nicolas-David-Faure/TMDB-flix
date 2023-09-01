@@ -3,8 +3,9 @@ import React, { useState } from 'react'
 import './sass/card.scss'
 //framer motion
 import { motion } from 'framer-motion'
-//context
-import { useInfoFilmsContext } from '../context/InfoFilmsContext'
+//redux
+import { useSelector , useDispatch } from 'react-redux'
+import { setFilmsDescription } from '../store/slice/infoDescription/infoDescriptionSlice'
 //commons
 import AddToFavorite from './AddToFavorite'
 //icons
@@ -13,11 +14,9 @@ import playIcon from '../assets/icons/play.svg'
 //img
 import IMG_NOT_FOUND from '../assets/images/image-not-found-1-scaled.png'
 
-const Card = ({ user ,film }) => {
+const Card = ({ film }) => {
   const [ isHover, setIsHover ] = useState(false)
   const URL_IMAGE = 'https://image.tmdb.org/t/p/original'
-
-  const { setFilmDescription } = useInfoFilmsContext()  //global setState 
 
   let timeOut;
   const handleMouseEnter = () => { //active a setTimeOut whith some delay before define setIsHover to true 
@@ -46,18 +45,17 @@ const Card = ({ user ,film }) => {
         <img src={ ifThereAreImage } alt={ film.title } />
 
         <InfoCard 
-          user={user} 
           film={film} 
           isHover={isHover}
-          setFilmDescription={setFilmDescription} />
+           />
       </figure>
     </motion.div>
   )
 }
 
 
-const InfoCard =({ user, film , setFilmDescription , isHover })=>{
-
+const InfoCard =({ film , isHover })=>{
+  const dispatch = useDispatch()
   
 
   const displayFigcaption = {//If isHover then show me the figcaption element 
@@ -74,9 +72,9 @@ return (
     variants={displayFigcaption}>
 
       <div className='card__btn_cont'>
-        {film && <AddToFavorite user={user} film={film}/>}
+        {film && <AddToFavorite film={film}/>}
 
-        <div className='card__show_description' onClick={()=>setFilmDescription(film)}>{/*set film to a global state context to use on infoDescription.jsx*/}
+        <div className='card__show_description' onClick={()=>dispatch(setFilmsDescription(film))}>{/*set film to a global state context to use on infoDescription.jsx*/}
           <img src={arrowDonwIcon} alt="description" />
         </div> 
       </div>

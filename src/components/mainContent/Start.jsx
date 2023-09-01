@@ -5,7 +5,7 @@ const Start = () => {
   return (
     <article className='start__main'>
       <div>
-        <h2>Inicia sesion para disfrutar las mejores peliculas o programas de television</h2>
+        <h2>Inicia sesión para disfrutar las mejores películas y programas de televisión</h2>
       </div>
     </article> 
   )

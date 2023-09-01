@@ -8,6 +8,7 @@ import Header from './components/header/Header'
 import AuthPanel from './components/header/AuthPanel'
 import MainContent from './components/mainContent/MainContent'
 import axios from 'axios'
+import Footer from './components/footer/Footer'
 
 function App() {
 
@@ -26,7 +27,7 @@ function App() {
         </Routes>
       </main>
 
-      <footer className='footer__main'></footer>
+      <Footer />
     </div>
   )
 }

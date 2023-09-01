@@ -1,21 +1,21 @@
 import React from 'react'
-//context
-import { useInfoFilmsContext } from '../context/InfoFilmsContext'
-import { useAcualizarDatosContext } from '../context/AcualizarDatosContext'
+//redux
+import { useSelector , useDispatch } from 'react-redux'
+import { setFilmsDescription } from '../store/slice/infoDescription/infoDescriptionSlice'
 //styles
 import './sass/banner.scss'
 //commons
 import AddToFavorite from './AddToFavorite'
 //img
 import IMG_NOT_FOUND from '../assets/images/image-not-found-1-scaled.png'
+const IMAGE_PATH = 'https://image.tmdb.org/t/p/original'
 
 const Banner = ({ film , activeBtnInfo = true }) => {
-  const { userLogged } = useAcualizarDatosContext()
-  const { IMAGE_PATH , setFilmDescription } = useInfoFilmsContext()
+  const {userLoggin} = useSelector(store=> store.userSlice)
+  const dispatch = useDispatch()
 
   let lengthTitle = film?.title.split(' ').length
   
-
   const canIRenderMoreInfoBtn = (film && activeBtnInfo)
 
   const POSTER__PATH = IMAGE_PATH+film?.backdrop_path
@@ -23,8 +23,8 @@ const Banner = ({ film , activeBtnInfo = true }) => {
   
   return (
 
-    <figure style={!activeBtnInfo ? {borderRadius: '5px 5px 0 0'} : {borderRadius: 0}} className='banner__main'>
-      <img  style={!activeBtnInfo ? {borderRadius: '5px 5px 0 0'} : {borderRadius: 0}} src={ifThereAreImage} alt={film?.title} />
+    <figure style={!activeBtnInfo ? {borderRadius: '5px 5px 0 0', height:'80vh'} : {borderRadius: 0 }} className='banner__main'>
+      <img  style={!activeBtnInfo ? {borderRadius: '5px 5px 0 0', height:'80vh'} : {borderRadius: 0 }} src={ifThereAreImage} alt={film?.title} />
       <figcaption>
 
         <div className='banner__description'>
@@ -35,11 +35,11 @@ const Banner = ({ film , activeBtnInfo = true }) => {
             {
               canIRenderMoreInfoBtn  ? 
 
-              <button onClick={()=>setFilmDescription(film)}>Mas información</button> 
+              <button onClick={()=>dispatch(setFilmsDescription(film))}>Mas información</button> 
               
                                       :
 
-              <AddToFavorite user={userLogged} film={film}/>
+              <AddToFavorite user={userLoggin} film={film}/>
             }
           </div>
 

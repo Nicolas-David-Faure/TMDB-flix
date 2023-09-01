@@ -4,10 +4,21 @@
 
 // export default function getFilmsSearched(filmName){
 //   return async ( dispatch )=>{
-//     dispatch(filmsLoading)
 
-//     const {data: {results : films}} = await axios.get(`/api/movie/search/${filmName}`)
-//     dispatch(setFilmsFounded(films))  
+//     const result = await axios.get(`/api/movie/search/${filmName}`).then(({data: {results}})=>results)
+    
+
+    
+//     if(result){
+//       let newArr = []
+
+//       result.forEach(obj=>{
+//         newArr.push(obj)
+//       })
+      
+//       dispatch(setFilmsFounded({newArr}))
+//     }
+
 //   }
 // }
 

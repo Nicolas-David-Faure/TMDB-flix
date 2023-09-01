@@ -72,25 +72,27 @@ router.get('/similar/:movie_id', async(req,res)=>{
       })
 })
 
-router.get('/all',async (req ,res)=>{
-
+router.get('/all/:page',async (req ,res)=>{
+  const { page } = req.params 
   const type = 'discover';
-
+  
   await axios.get(`${API_URL}/${type}/movie`,{
     params:{
       api_key: API_KEY,
       language:'es',
       include_video: true,
-      page: 3
+      page: page
     }
   }).then(({data})=>{
+
+    
     res.send(data)
   })
   .catch(err=>console.error(err))
 })
 
 router.get('/search/:film',async (req ,res)=>{
-  const {film} = req.params;
+  const { film } = req.params;
   const type = 'search';
 
   await axios.get(`${API_URL}/${type}/movie`,{

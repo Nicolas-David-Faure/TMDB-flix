@@ -1,37 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 //router
 import { NavLink } from 'react-router-dom'
-import { useAcualizarDatosContext } from '../../context/AcualizarDatosContext'
+//redux
+import { useDispatch, useSelector } from 'react-redux'
+import { togglePersonalAside } from '../../store/slice/favoritesSlice'
+import { setUserInfo } from '../../store/slice/userSlice/userSlice'
 //axios
 import axios from 'axios'
 //styles
 import './sass/nav.scss'
+//icons
+import userIcon from '../../assets/icons/user.svg'
+
 
 const Nav = () => {
-  const { userLogged , updateLoginUser } =  useAcualizarDatosContext()
-  const isLogged = typeof userLogged ==  'object' ? true : false; //is logged?
-
-  const handleLogout=()=>{
-    axios.post( '/api/user/logout' , {})
-
-    .then(()=> updateLoginUser() )
-    .catch(err=> console.error(err) )
-  }
+  const { isLoggin , userInfo } = useSelector(store => store.userSlice)
+  const [showList, setShowList] = useState(false)
 
   return (
     <nav className='nav__main'>
-      {isLogged ?
-          <NavLink 
-            className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "active" : ""}
-            to={'/'}>
-              <button onClick={handleLogout}>Cerrar sesión</button>
-          </NavLink>
+      {isLoggin ?
 
+          <div className='nav__user'>
+              <img onClick={ ()=>setShowList( ( prev )=> !prev ) } src={ userIcon } alt='user-icon' />
+             {showList && <UserOptions setShowList={ setShowList }/>}
+          </div>
                 :
-
           <>
-
             <NavLink 
               className={( { isActive, isPending } ) =>
               isPending ? "pending" : isActive ? "active" : ""}
@@ -48,6 +43,41 @@ const Nav = () => {
           </>
           }
     </nav>
+  )
+}
+
+const UserOptions = ({ setShowList })=>{
+  const dispatch = useDispatch()
+
+  const handleLogout=()=>{
+    axios.post( '/api/user/logout' , {})
+    .then(()=> dispatch(setUserInfo(401)) )
+    .catch(err=> console.error(err) )
+  }
+
+  const handleTogglePersonalAside = ()=>{
+    dispatch(togglePersonalAside())
+    setShowList(false)
+  }
+  return(
+    <div className='userOptions__main'>
+      <ul>
+        <li onClick={handleTogglePersonalAside} >Ver favoritos</li>
+        <li>Buscar usuarios</li>
+        <li>Recomendados</li>
+        <li> 
+          <NavLink 
+                  className={({ isActive, isPending }) =>
+                  isPending ? "pending" : isActive ? "active" : ""}
+                  to={'/'} onClick={handleLogout} >
+                   Cerrar sesión
+                </NavLink>
+            </li>
+      
+         
+      </ul>
+    </div>
+    
   )
 }
 

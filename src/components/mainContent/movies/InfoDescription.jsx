@@ -1,34 +1,38 @@
 import React, { useEffect } from 'react'
 //style
 import './sass/infoDescription.scss'
-//context
-import { useInfoFilmsContext } from '../../../context/InfoFilmsContext'
+//redux
+import { useSelector , useDispatch } from 'react-redux'
+import { setFilmsDescription } from '../../../store/slice/infoDescription/infoDescriptionSlice'
 //commons
 import Banner from '../../../commons/Banner'
 //icons
 import xIcon from '../../../assets/icons/x.svg'
-
+const IMAGE_PATH = 'https://image.tmdb.org/t/p/original'
 const InfoDescription = ({ film }) => {
-  const { filmDescription , setFilmDescription , genres } = useInfoFilmsContext()
+  const { filmGenres } = useSelector(store=> store.infoDescriptionSlice)
+  const dispatch = useDispatch()
 
   const handleCloseInfoDescription = () =>{ 
-    setFilmDescription( null )
+    dispatch(setFilmsDescription( null ))
     document.body.style.overflow = 'auto';
   }
 
 //{{overview,title,genre_ids,video}}
 
-  const genresMovie = genres.filter( ( genre ) => film.genre_ids.includes(genre.id) );
+  const genresMovie = filmGenres.filter( ( genre ) => film.genre_ids.includes(genre.id) );
 
   let genresString = genresMovie.map( ( { name } )=>( ` ${ name }` ) ).toString()
 
   useEffect(()=>{
     document.body.style.overflow = 'hidden';
+    
+   
   },[])
 
   return (
-    <span className='infoDescription__main'>
-      <article>
+    <span onClick={handleCloseInfoDescription} className='infoDescription__main'>
+      <article onClick={(e)=>e.stopPropagation()}>
 
         <img 
           className='infoDescription__btn_close' 

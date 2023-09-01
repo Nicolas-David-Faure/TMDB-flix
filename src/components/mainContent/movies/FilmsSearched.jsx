@@ -1,7 +1,7 @@
 import React from 'react'
-//context
-import { useInfoFilmsContext } from '../../../context/InfoFilmsContext'
-import { useAcualizarDatosContext } from '../../../context/AcualizarDatosContext'
+//redux
+import { useSelector } from 'react-redux'
+
 //styles
 import './sass/filmsSerched.scss'
 //commons
@@ -9,19 +9,19 @@ import Card from '../../../commons/Card'
 import Banner from '../../../commons/Banner'
 
 const FilmsSearched = () => {
-  const { userLogged } = useAcualizarDatosContext()
-  const { filmsSerched } = useInfoFilmsContext()
+  const {userLoggin} = useSelector(store=> store.userSlice)
+  const {filmsFounded} = useSelector(store=>store.filmsSlice)
 
-  const filmsSerchedAreThere = filmsSerched ? true : false;
+  const filmsSerchedAreThere = filmsFounded ? true : false;
 
   return (
     <div className='filmsSerched__main'>
 
-      { filmsSerchedAreThere && <Banner film={ filmsSerched[0] }/> }
+      { filmsSerchedAreThere && <Banner film={ filmsFounded[0] }/> }
 
       { 
-        filmsSerchedAreThere && filmsSerched.map(( film) =>(
-          <Card key={ film.id } film={ film } user={ userLogged }/>
+        filmsSerchedAreThere && filmsFounded.map(( film) =>(
+          <Card key={ film.id } film={ film } user={ userLoggin }/>
         )) 
       }
 

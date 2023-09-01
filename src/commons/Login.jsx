@@ -1,25 +1,29 @@
 import React, { useState } from 'react'
 //router
-import { useAcualizarDatosContext } from '../context/AcualizarDatosContext'
+
 import { useNavigate } from 'react-router-dom'
+//redux
+
 //axios
 import axios from 'axios'
 //styles
 import './sass/login.scss'
 //utils
 import cleanStateObj from '../utils/cleanSatateObj'
-
+import {  useDispatch } from 'react-redux'
+import { setUserInfo } from '../store/slice/userSlice/'
 const Login = () => {
-  const [ userInfo , setUserInfo ] = useState({ email: '', password: '' })
-  const { updateLoginUser } = useAcualizarDatosContext()
-  const navigate = useNavigate()
+  const dispatch = useDispatch()
 
+  const [ userInfo , setUserInfoState ] = useState({ email: '', password: '' })
+
+  const navigate = useNavigate()
+  
   const handleSubmit =(event)=>{
     event.preventDefault()
     axios.post('/api/user/login', userInfo)
     .then((res)=>{
-      setUserInfo(cleanStateObj)
-      updateLoginUser()
+      setUserInfoState(cleanStateObj)
       navigate('/browse')
     })
   }
@@ -28,7 +32,7 @@ const Login = () => {
     const inputValue = event.target.type !== 'number' ? event.target.value.toLowerCase() : event.target.value
     const inputName = event.target.name
 
-    setUserInfo({...userInfo, [inputName]:inputValue})
+    setUserInfoState({...userInfo, [inputName]:inputValue})
   }
   return (
     <section className='login__main'>

@@ -2,8 +2,6 @@ import React from 'react'
 import { useEffect , useState } from 'react'
 //axios
 import axios  from 'axios'
-
-
 const useAxiosGetData = (path) => {
   const [data, setData] = useState(null);
 

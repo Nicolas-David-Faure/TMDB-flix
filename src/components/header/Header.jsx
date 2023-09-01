@@ -1,17 +1,17 @@
 import React from 'react'
 //router
 import { Link } from 'react-router-dom'
+//redux
+import { useSelector } from 'react-redux'
 //styles
 import './sass/header.scss'
-//context
-import { useAcualizarDatosContext } from '../../context/AcualizarDatosContext'
 //components
 import Nav from './Nav'
 import SearchFilms from './SearchFilms'
 
 const Header = () => {
-  const { userIsLogged } = useAcualizarDatosContext()
-
+  const { isLoggin } = useSelector(store => store.userSlice)
+  
   return (
     <header className='header__main'>
 
@@ -19,7 +19,7 @@ const Header = () => {
         <h1>TMDBFLIX</h1>
       </Link>
 
-      { userIsLogged && <SearchFilms /> }
+      { isLoggin && <SearchFilms /> }
 
       <Nav />
 

@@ -1,20 +1,23 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.scss'
-
+//router
 import { BrowserRouter } from "react-router-dom";
+//redux
+import { Provider } from 'react-redux';
+import { store } from './store/store.js';
+//styles
+import './index.scss'
+//app
+import App from './App.jsx'
 
-import { AcualizarDatosContextProvider } from './context/AcualizarDatosContext.jsx';
-import { InfoFilmsContextProvider } from './context/InfoFilmsContext.jsx';
+//Todo: Pasar todos los estados globales a redux //pending
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
-        <AcualizarDatosContextProvider>
-          <InfoFilmsContextProvider>
-            <App />
-          </InfoFilmsContextProvider>
-        </AcualizarDatosContextProvider>
+      <Provider store={store}>
+              <App />
+      </Provider>
     </BrowserRouter>
   </React.StrictMode>,
 )

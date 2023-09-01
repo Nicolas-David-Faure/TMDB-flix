@@ -6,13 +6,15 @@ import './sass/addToFavorite.scss'
 //icons
 import plusIcon from '../assets/icons/plus.svg'
 import checkIcon from '../assets/icons/check.svg'
+import { useSelector } from 'react-redux';
 
-const AddToFavorite = ({ film , user }) => {
+const AddToFavorite = ({ film  }) => {
+  const { userInfo } = useSelector(store=> store.userSlice)
   const [ favorites , setFavorites ] = useState([])
-
+  
   const filmTitle = film?.title;
   const filmId = film?.id;
-  const userEmail = film?.email
+  const userEmail = userInfo.email
 
   const filmInfo = { title: filmTitle , id: filmId }
 
@@ -20,17 +22,17 @@ const AddToFavorite = ({ film , user }) => {
   
   const handleToggleIcon= async()=>{
     if(isFavorite === plusIcon){
-      await axios.post(`/api/favorites/add/${ user?.email }`, filmInfo)
+      await axios.post(`/api/favorites/add/${ userEmail }`, filmInfo)
             .then(({data: arrFavorites})=>{setFavorites(arrFavorites)})
     }
     if(isFavorite === checkIcon) {
-       await axios.put(`/api/favorites/remove`,{...filmInfo, user_email: user?.email})
+       await axios.put(`/api/favorites/remove`,{...filmInfo, user_email: userEmail})
               .then(({data: arrFavorites})=>{setFavorites(arrFavorites)})
     }
   }
 
   useEffect(()=>{
-     axios.get(`/api/favorites/${user?.email}`)
+     axios.get(`/api/favorites/${userEmail}`)
       .then(({data:arrFavorites})=>{setFavorites(arrFavorites)})
       .catch(err=>err)
       .finally(()=>{

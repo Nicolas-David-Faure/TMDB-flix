@@ -1,4 +1,7 @@
 import React, { useEffect , useState } from 'react'
+//redux
+import { useDispatch } from 'react-redux'
+
 //router
 import { useNavigate } from 'react-router-dom'
 //axios
@@ -7,19 +10,21 @@ import axios from 'axios'
 import './sass/searchFilms.scss'
 //icons
 import searchIcon from '../../assets/icons/search.svg'
-import { useInfoFilmsContext } from '../../context/InfoFilmsContext'
+import { setFilmsFounded } from '../../store/slice/filmsSlice/filmsSlice'
 
 const SearchFilms = () => {
   const navigate = useNavigate()                      //instance of useNaviagate
-  const { setFilmsSerched } = useInfoFilmsContext()    //Context films
+     //Context films
   const [ filmName , setFilmName ] = useState('');   
+
+  const dispatch = useDispatch()
 
   const handleSubmit = async( event )=>{
     if ( event ) {                  
       event.preventDefault();
     }                  
-    const {data: {results : films}} = await axios.get(`/api/movie/search/${filmName}`)   
-    setFilmsSerched(films)  
+    const result = await axios.get(`/api/movie/search/${filmName}`).then(({data: {results}})=>results)
+    dispatch(setFilmsFounded(result))  
   }
 
   const handleChange =( event )=>{
