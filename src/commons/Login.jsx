@@ -25,7 +25,7 @@ const Login = () => {
   }
 
   const handleChange = (event)=>{
-    const inputValue = event.target.type !== 'number' ? e.target.value.toLowerCase() : e.target.value
+    const inputValue = event.target.type !== 'number' ? event.target.value.toLowerCase() : event.target.value
     const inputName = event.target.name
 
     setUserInfo({...userInfo, [inputName]:inputValue})
@@ -56,7 +56,7 @@ const Login = () => {
           />
         <button type='submit'>Ingresar</button>
       </form>
-      
+
     </section>
   )
 }

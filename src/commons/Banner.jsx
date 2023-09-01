@@ -6,6 +6,8 @@ import { useAcualizarDatosContext } from '../context/AcualizarDatosContext'
 import './sass/banner.scss'
 //commons
 import AddToFavorite from './AddToFavorite'
+//img
+import IMG_NOT_FOUND from '../assets/images/image-not-found-1-scaled.png'
 
 const Banner = ({ film , activeBtnInfo = true }) => {
   const { userLogged } = useAcualizarDatosContext()
@@ -16,10 +18,13 @@ const Banner = ({ film , activeBtnInfo = true }) => {
 
   const canIRenderMoreInfoBtn = (film && activeBtnInfo)
 
+  const POSTER__PATH = IMAGE_PATH+film?.backdrop_path
+  const ifThereAreImage = POSTER__PATH !== 'https://image.tmdb.org/t/p/originalundefined' ? POSTER__PATH : IMG_NOT_FOUND;
+  
   return (
 
     <figure style={!activeBtnInfo ? {borderRadius: '5px 5px 0 0'} : {borderRadius: 0}} className='banner__main'>
-      <img  style={!activeBtnInfo ? {borderRadius: '5px 5px 0 0'} : {borderRadius: 0}} src={IMAGE_PATH+film?.backdrop_path} alt={film?.title} />
+      <img  style={!activeBtnInfo ? {borderRadius: '5px 5px 0 0'} : {borderRadius: 0}} src={ifThereAreImage} alt={film?.title} />
       <figcaption>
 
         <div className='banner__description'>

@@ -19,11 +19,15 @@ router.post('/add/:user_mail',async (req, res)=>{
   const { user_mail } = req.params;
   const {title, id} = req.body;
   
+
+  console.log(user_mail)
+  
   const movie = await Movie.findOrCreate({
     where: { id },
     defaults: { title, id}
   }).then(movie=>movie)
   .catch(err=>console.error(err))
+
   const user = await User.findOne({where:{email:user_mail}});
 
   await user.addMovies(movie[0]);

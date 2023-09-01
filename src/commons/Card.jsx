@@ -10,6 +10,8 @@ import AddToFavorite from './AddToFavorite'
 //icons
 import arrowDonwIcon from '../assets/icons/arrowDown.svg'
 import playIcon from '../assets/icons/play.svg'
+//img
+import IMG_NOT_FOUND from '../assets/images/image-not-found-1-scaled.png'
 
 const Card = ({ user ,film }) => {
   const [ isHover, setIsHover ] = useState(false)
@@ -28,6 +30,9 @@ const Card = ({ user ,film }) => {
     clearTimeout(timeOut);
     setIsHover(false);
   };
+  const POSTER__PATH =  URL_IMAGE + film.poster_path
+  
+  const ifThereAreImage = POSTER__PATH !== 'https://image.tmdb.org/t/p/originalnull' ? POSTER__PATH : IMG_NOT_FOUND;
 
   return (
     <motion.div                            
@@ -38,7 +43,7 @@ const Card = ({ user ,film }) => {
       onHoverEnd={handleMouseLeave} //if is not on hover the state is hover pass to false
       >
       <figure>
-        <img src={ URL_IMAGE + film.poster_path } alt={ film.title } />
+        <img src={ ifThereAreImage } alt={ film.title } />
 
         <InfoCard 
           user={user} 
@@ -53,7 +58,7 @@ const Card = ({ user ,film }) => {
 
 const InfoCard =({ user, film , setFilmDescription , isHover })=>{
 
-  const userAndFilmAreThere = (user && film)
+  
 
   const displayFigcaption = {//If isHover then show me the figcaption element 
     on:{display:'flex',y: -5 ,zIndex:20,opacity: 1
@@ -69,7 +74,7 @@ return (
     variants={displayFigcaption}>
 
       <div className='card__btn_cont'>
-        {userAndFilmAreThere && <AddToFavorite user={user} film={film}/>}
+        {film && <AddToFavorite user={user} film={film}/>}
 
         <div className='card__show_description' onClick={()=>setFilmDescription(film)}>{/*set film to a global state context to use on infoDescription.jsx*/}
           <img src={arrowDonwIcon} alt="description" />

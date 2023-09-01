@@ -12,27 +12,27 @@ const AddToFavorite = ({ film , user }) => {
 
   const filmTitle = film?.title;
   const filmId = film?.id;
-  const filmEmail = film?.email
+  const userEmail = film?.email
 
-  const filmInfo = { title: filmId , id: filmTitle}
+  const filmInfo = { title: filmTitle , id: filmId }
 
-  const isFavorite = favorites?.find(({id})=>id === film.id) ? checkIcon : plusIcon;
+  const isFavorite = favorites?.find(({id})=>id === film?.id) ? checkIcon : plusIcon;
   
   const handleToggleIcon= async()=>{
     if(isFavorite === plusIcon){
-      await axios.post(`/api/favorites/add/${ filmEmail }`, filmInfo)
-            .then(({data: arrFavorites})=>setFavorites(arrFavorites))
+      await axios.post(`/api/favorites/add/${ user?.email }`, filmInfo)
+            .then(({data: arrFavorites})=>{setFavorites(arrFavorites)})
     }
     if(isFavorite === checkIcon) {
-       await axios.put(`/api/favorites/remove`,{...filmInfo, user_email: user.email})
-              .then(({data: arrFavorites})=>setFavorites(arrFavorites))
+       await axios.put(`/api/favorites/remove`,{...filmInfo, user_email: user?.email})
+              .then(({data: arrFavorites})=>{setFavorites(arrFavorites)})
     }
   }
 
   useEffect(()=>{
      axios.get(`/api/favorites/${user?.email}`)
-      .then(({data:arrFavorites})=>setFavorites(arrFavorites))
-      .catch(err=>console.error(err))
+      .then(({data:arrFavorites})=>{setFavorites(arrFavorites)})
+      .catch(err=>err)
       .finally(()=>{
       })
   },[])
