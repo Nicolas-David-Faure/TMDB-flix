@@ -10,12 +10,12 @@ import './sass/login.scss'
 import cleanStateObj from '../utils/cleanSatateObj'
 
 const Login = () => {
-  const [userInfo, setUserInfo] = useState({email: '', password: ''})
-  const { updateLoginUser} = useAcualizarDatosContext()
+  const [ userInfo , setUserInfo ] = useState({ email: '', password: '' })
+  const { updateLoginUser } = useAcualizarDatosContext()
   const navigate = useNavigate()
 
-  const handleSubmit =(e)=>{
-    e.preventDefault()
+  const handleSubmit =(event)=>{
+    event.preventDefault()
     axios.post('/api/user/login', userInfo)
     .then((res)=>{
       setUserInfo(cleanStateObj)
@@ -24,35 +24,39 @@ const Login = () => {
     })
   }
 
-  const handleChange = (e)=>{
-    const inputValue = e.target.type !== 'number' ? e.target.value.toLowerCase() : e.target.value
-    const inputName = e.target.name
+  const handleChange = (event)=>{
+    const inputValue = event.target.type !== 'number' ? e.target.value.toLowerCase() : e.target.value
+    const inputName = event.target.name
 
     setUserInfo({...userInfo, [inputName]:inputValue})
   }
   return (
     <section className='login__main'>
+
       <form onSubmit={handleSubmit}>
         <h2>Inicia sesión</h2>
          <input 
-          onChange={handleChange}
-          type="email" 
-          name="email" 
           id="register-email" 
+          name="email" 
+          type="email" 
           value={userInfo.email}
+          onChange={handleChange}
           placeholder='Email'
+          required
           />
 
         <input 
-          onChange={handleChange}
-          type="password" 
-          name="password" 
           id="register-password" 
+          name="password" 
+          type="password" 
           value={userInfo.password}
+          onChange={handleChange}
           placeholder='Contraseña'
+          required
           />
         <button type='submit'>Ingresar</button>
       </form>
+      
     </section>
   )
 }

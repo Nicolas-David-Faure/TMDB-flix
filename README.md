@@ -1,8 +1,9 @@
 Para ejecutar la aplicación completa:
 ---->1-Crear base de datos psql llamada 'tmdbflix'
----->2-Para levantar el back-end ir a /api y npm satart
----->3-Para levantar el front-end ir a /src y npm satart
+---->2-Para levantar el back-end ir a /api, istalar las dependencias "npm i" y npm start para leventar el sv
+---->3-Para levantar el front-end ir a /src, istalar las dependencias "npm i" y npm run dev para levantar el sv
 
+-Creado con vite
 
 Api url: 'https://api.themoviedb.org/3/movie/76341?api_key=d2b252c13bc8a9ed431ab7234dc8c253'
 
@@ -28,7 +29,7 @@ A-Prioridad Alta (Must Have)
   5-*Ver los detalles de una película o programa de televisión. //Completado
   6-*Agregar/eliminar una película o programa a una lista de favoritos. //pending
   7-*Ver tu lista de favoritos. //pending
-
+  
 B-Prioridad Media (Nice To Have)
   8-*Diferenciar las rutas de front-end para películas y programas de televisión.
   9-*Buscar usuarios.

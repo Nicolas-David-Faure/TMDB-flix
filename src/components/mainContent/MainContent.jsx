@@ -9,8 +9,6 @@ import Movies from './movies/Movies'
 const MainContent = () => {
   const { userLogged , userIsLogged } = useAcualizarDatosContext()
   
-  
-
   return (
     <main className='mainContent__main'>
       {userIsLogged ? <Movies />: <Start /> }

@@ -6,17 +6,21 @@ import './sass/addToFavorite.scss'
 //icons
 import plusIcon from '../assets/icons/plus.svg'
 import checkIcon from '../assets/icons/check.svg'
-import { useAcualizarDatosContext } from '../context/AcualizarDatosContext';
 
-const AddToFavorite = ({ film , user}) => {
-  const [favorites, setFavorites ] = useState([])
-  const filmInfo = {title:film.title, id:film.id}
+const AddToFavorite = ({ film , user }) => {
+  const [ favorites , setFavorites ] = useState([])
+
+  const filmTitle = film?.title;
+  const filmId = film?.id;
+  const filmEmail = film?.email
+
+  const filmInfo = { title: filmId , id: filmTitle}
+
   const isFavorite = favorites?.find(({id})=>id === film.id) ? checkIcon : plusIcon;
   
-
   const handleToggleIcon= async()=>{
     if(isFavorite === plusIcon){
-      await axios.post(`/api/favorites/add/${user?.email}`, filmInfo)
+      await axios.post(`/api/favorites/add/${ filmEmail }`, filmInfo)
             .then(({data: arrFavorites})=>setFavorites(arrFavorites))
     }
     if(isFavorite === checkIcon) {

@@ -8,44 +8,45 @@ import axios from 'axios'
 import './sass/nav.scss'
 
 const Nav = () => {
-  const { userLogged ,updateLoginUser } =  useAcualizarDatosContext()
+  const { userLogged , updateLoginUser } =  useAcualizarDatosContext()
   const isLogged = typeof userLogged ==  'object' ? true : false; //is logged?
+
   const handleLogout=()=>{
-    axios.post('/api/user/logout', {})
-    .then(()=>{
-      updateLoginUser()
-    })
-    .catch(err=>{
-      console.error(err)
-    })
+    axios.post( '/api/user/logout' , {})
+
+    .then(()=> updateLoginUser() )
+    .catch(err=> console.error(err) )
   }
 
   return (
     <nav className='nav__main'>
-    {isLogged ?
-        <NavLink 
-          className={({ isActive, isPending }) =>
-          isPending ? "pending" : isActive ? "active" : ""}
-          to={'/'}>
-          <button onClick={handleLogout}>Cerrar sesión</button>
-          </NavLink>
-      :
-      <>
-        <NavLink 
-          className={({ isActive, isPending }) =>
-          isPending ? "pending" : isActive ? "active" : ""}
-          to={'/auth_panel?type=register'}>
-          <button>Registrate</button>
+      {isLogged ?
+          <NavLink 
+            className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "active" : ""}
+            to={'/'}>
+              <button onClick={handleLogout}>Cerrar sesión</button>
           </NavLink>
 
-        <NavLink 
-          className={({ isActive, isPending }) =>
-          isPending ? "pending" : isActive ? "active" : ""}
-          to={'/auth_panel?type=login'}>
-          <button>Ingresar</button>
-          </NavLink>
+                :
+
+          <>
+
+            <NavLink 
+              className={( { isActive, isPending } ) =>
+              isPending ? "pending" : isActive ? "active" : ""}
+              to={'/auth_panel?type=register'}>
+                <button>Registrate</button>
+            </NavLink>    
+            <NavLink 
+              className={( { isActive, isPending } ) =>
+              isPending ? "pending" : isActive ? "active" : ""}
+              to={'/auth_panel?type=login'}>
+                <button>Ingresar</button>
+            </NavLink>
+
           </>
-        }
+          }
     </nav>
   )
 }

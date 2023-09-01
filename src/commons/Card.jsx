@@ -9,9 +9,10 @@ import { useInfoFilmsContext } from '../context/InfoFilmsContext'
 import AddToFavorite from './AddToFavorite'
 //icons
 import arrowDonwIcon from '../assets/icons/arrowDown.svg'
+import playIcon from '../assets/icons/play.svg'
 
 const Card = ({ user ,film }) => {
-  const [isHover, setIsHover] = useState(false)
+  const [ isHover, setIsHover ] = useState(false)
   const URL_IMAGE = 'https://image.tmdb.org/t/p/original'
 
   const { setFilmDescription } = useInfoFilmsContext()  //global setState 
@@ -28,51 +29,59 @@ const Card = ({ user ,film }) => {
     setIsHover(false);
   };
 
-
-
   return (
     <motion.div                            
       layout
+      animate={ isHover ? {scale:1.2, zIndex:20 } : {scale:1} } //some scale when isHover
+      className='card__main' 
       onHoverStart={handleMouseEnter} //if is on hover the state is hover pass to true
       onHoverEnd={handleMouseLeave} //if is not on hover the state is hover pass to false
-      animate={isHover ? {scale:1.2, zIndex:20 } : {scale:1} } //some scale when isHover
-      className='card__main' >
+      >
       <figure>
-        <img src={URL_IMAGE + film.poster_path} alt={film.title} />
+        <img src={ URL_IMAGE + film.poster_path } alt={ film.title } />
 
-        <motion.figcaption  
-          layout
-           initial={{
-            y:-10,
-            opacity: 0,
-            display:'none'
-          }}
-            animate={isHover ? {  
-            display:'flex',//If isHover then show me the figcaption element 
-            y: -5 ,
-            zIndex:20,
-            opacity: 1,}
-            :{
-            y:-10,
-            opacity: 0,
-            display:'none' //else not 
-          }}
-            >
-            <div className='card__btn_cont'>
-              {(user && film) && <AddToFavorite user={user} film={film}/>}
-              <div className='card__show_description' onClick={()=>setFilmDescription(film)}>
-                <img src={arrowDonwIcon} alt="description" />
-              </div> {/*set film to a global state context to use on infoDescription.jsx*/}
-            </div>
-            <div className='card__desc_cont'>
-              <h5>{film.title}</h5>
-            </div>
-        </motion.figcaption>
+        <InfoCard 
+          user={user} 
+          film={film} 
+          isHover={isHover}
+          setFilmDescription={setFilmDescription} />
       </figure>
     </motion.div>
   )
 }
 
+
+const InfoCard =({ user, film , setFilmDescription , isHover })=>{
+
+  const userAndFilmAreThere = (user && film)
+
+  const displayFigcaption = {//If isHover then show me the figcaption element 
+    on:{display:'flex',y: -5 ,zIndex:20,opacity: 1
+    },
+    off:{y:-10,opacity: 0,display:'none'}
+  }
+
+return (
+  <motion.figcaption  
+    layout 
+    initial={'off'} 
+    animate={isHover ? 'on': 'off'} 
+    variants={displayFigcaption}>
+
+      <div className='card__btn_cont'>
+        {userAndFilmAreThere && <AddToFavorite user={user} film={film}/>}
+
+        <div className='card__show_description' onClick={()=>setFilmDescription(film)}>{/*set film to a global state context to use on infoDescription.jsx*/}
+          <img src={arrowDonwIcon} alt="description" />
+        </div> 
+      </div>
+
+      <div className='card__desc_cont'> 
+        <h5>{film?.title}</h5> 
+      </div>
+  </motion.figcaption>
+)
+}
 
 
 export default Card
