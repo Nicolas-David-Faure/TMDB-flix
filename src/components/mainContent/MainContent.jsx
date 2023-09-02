@@ -16,14 +16,11 @@ const MainContent = () => {
   //const [userLogged, setLoginUser] = useState(null)
   const favoritesSlice = useSelector(store=> store.favoritesSlice)
   const user = useSelector(store => store.userSlice)
-  
-  const userIsLogged =  user.isLoggin
+  const userIsLogged = user.isLoggin
 
   const dispatch = useDispatch()
-
   
   const ifAsideOfFavorites = favoritesSlice.personalAside
-
 
   useEffect(()=>{
        axios.get('/api/user/me')
@@ -38,7 +35,7 @@ const MainContent = () => {
   return (
     <main className='mainContent__main'>
       {ifAsideOfFavorites && <AsidePersonalFavorites />}
-      {userIsLogged ? <Movies />: <Start /> }
+      {userIsLogged ? <Movies /> : <Start /> }
     </main>
   )
 }

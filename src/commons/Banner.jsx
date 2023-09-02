@@ -8,14 +8,23 @@ import './sass/banner.scss'
 import AddToFavorite from './AddToFavorite'
 //img
 import IMG_NOT_FOUND from '../assets/images/image-not-found-1-scaled.png'
+import { useLocation } from 'react-router-dom'
 const IMAGE_PATH = 'https://image.tmdb.org/t/p/original'
 
 const Banner = ({ film , activeBtnInfo = true }) => {
+  const {pathname} = useLocation();
+  let type = pathname.split('/').at(-1) 
+  
+
+
   const {userLoggin} = useSelector(store=> store.userSlice)
   const dispatch = useDispatch()
+  let nameOrTitle = type === 'tv' ? 'name' : 'title'
 
-  let lengthTitle = film?.title.split(' ').length
-  
+
+
+  let lengthTitle = film?.[ nameOrTitle ]?.split(' ').length
+ 
   const canIRenderMoreInfoBtn = (film && activeBtnInfo)
 
   const POSTER__PATH = IMAGE_PATH+film?.backdrop_path
@@ -29,7 +38,7 @@ const Banner = ({ film , activeBtnInfo = true }) => {
 
         <div className='banner__description'>
 
-          <h2 style={lengthTitle >= 3 ? {fontSize: '3rem' , lineHeight:'3rem'}: {fontSize: '5rem'} } >{film?.title}</h2>
+          <h2 style={lengthTitle >= 3 ? {fontSize: '3rem' , lineHeight:'3rem'}: {fontSize: '5rem'} } >{film?.[nameOrTitle]}</h2>
           <div>
             <button>Reproducir</button>
             {

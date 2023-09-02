@@ -19,10 +19,10 @@ const Footer_divisor2 = () => {
         <hr />
 
         <div className='footer__divisor-2 footer_schedules'>
-            <p>Desarrollador FullStack</p>
+            <p>Desarrollo Full Stack</p>
             <p>Tech utilizadas:</p>
-            <p>Front-End: React.js | React-router | Axios | Redux | Sass | Framer-motion</p>
-            <p>Back-End: Node.js | Express | Json-Web-Token | Sequelize | Bccrypt | PostgreSQL</p>
+            <p>{'->'} Front-End: React.js | React-router | Axios | Redux | Sass | Framer-motion</p>
+            <p>{'->'} Back-End: Node.js | Express | Json-Web-Token | Sequelize | Bccrypt | PostgreSQL | Axios</p>
         </div>
 
           <hr />

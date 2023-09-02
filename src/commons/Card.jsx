@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+//router
+import { useLocation } from 'react-router-dom'
 //styles
 import './sass/card.scss'
 //framer motion
@@ -15,6 +17,10 @@ import playIcon from '../assets/icons/play.svg'
 import IMG_NOT_FOUND from '../assets/images/image-not-found-1-scaled.png'
 
 const Card = ({ film }) => {
+  const {pathname} = useLocation();
+  let type = pathname.split('/').at(-1) 
+  let nameOrTitle = type === 'tv' ? 'name' : 'title'
+
   const [ isHover, setIsHover ] = useState(false)
   const URL_IMAGE = 'https://image.tmdb.org/t/p/original'
 
@@ -42,7 +48,7 @@ const Card = ({ film }) => {
       onHoverEnd={handleMouseLeave} //if is not on hover the state is hover pass to false
       >
       <figure>
-        <img src={ ifThereAreImage } alt={ film.title } />
+        <img src={ ifThereAreImage } alt={ film[nameOrTitle] } />
 
         <InfoCard 
           film={film} 
@@ -55,6 +61,9 @@ const Card = ({ film }) => {
 
 
 const InfoCard =({ film , isHover })=>{
+  const {pathname} = useLocation();
+  let type = pathname.split('/').at(-1) 
+  let nameOrTitle = type === 'tv' ? 'name' : 'title'
   const dispatch = useDispatch()
   
 
@@ -88,7 +97,7 @@ return (
       </div>
 
       <div className='card__desc_cont'> 
-        <h5>{film?.title}</h5> 
+        <h5>{film?.[nameOrTitle]}</h5> 
       </div>
   </motion.figcaption>
 )

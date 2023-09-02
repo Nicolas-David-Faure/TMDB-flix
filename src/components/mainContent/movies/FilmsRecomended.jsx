@@ -6,23 +6,27 @@ import './sass/moviesRecomended.scss'
 //commons
 import Slider from '../../../commons/Slider'
 import Banner from '../../../commons/Banner'
+import { useLocation } from 'react-router-dom'
 
-const MoviesRecomended = () => {
+const FilmsRecomended = ( { type = 'movie' } ) => {
+
   const [data,setData] = useState(null)
   const { results  : films = []} = data ? data : {results: ''}
   const [randomFIlm, setRandomFilm] = useState(null)
   
+ 
   useEffect(()=>{
+
     setRandomFilm(Math.ceil(Math.random() * 20))
     const randomPage = Math.ceil(Math.random() * 20)
 
-    axios.get(`/api/movie/all/${randomPage}`)
+    axios.get(`/api/${type}/all/${randomPage}`)
             .then(response => setData(response.data))
             .catch(err => {
               const status = err.response?.status
               setData(status)
             });      
-  },[])
+  },[type])
 
   return (
     <div className='moviesRecomended__main'>
@@ -33,4 +37,4 @@ const MoviesRecomended = () => {
   )
 }
 
-export default MoviesRecomended
+export default FilmsRecomended

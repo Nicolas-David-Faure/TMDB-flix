@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react'
+//router
+import { useLocation } from 'react-router-dom'
 //style
 import './sass/infoDescription.scss'
 //redux
@@ -10,6 +12,8 @@ import Banner from '../../../commons/Banner'
 import xIcon from '../../../assets/icons/x.svg'
 const IMAGE_PATH = 'https://image.tmdb.org/t/p/original'
 const InfoDescription = ({ film }) => {
+  
+
   const { filmGenres } = useSelector(store=> store.infoDescriptionSlice)
   const { personalAside , thereWasChange, change } = useSelector(store => store.favoritesSlice)
   const dispatch = useDispatch()
@@ -49,12 +53,14 @@ const InfoDescription = ({ film }) => {
 }
 
 const Description = ( { film , genresString } ) => {
+  
+  // let nameOrTitle = type === 'tv' ? 'name' : 'title'
 
   return(
     <div className='infoDescription__description'>
 
       <div>
-        <p>Descripcón: { film.overview }</p>
+        <p>Descripción: { film.overview ? film.overview : 'Descripción no encontrada...' }</p>
       </div>
 
       <div >

@@ -17,6 +17,21 @@ background: linear-gradient(0deg, rgba(79, 53, 53, 0) 0%, rgba(0,0,0,1) 70%);
     }
   }
   a:hover{
-    color: $color1;
+    color: $color3;
   }
+
+  .active{
+    scale: 1.1;
+    background-color: rgba(189, 11, 11, 0.658);
+    border-radius: 3px;
+    color: rgba(255, 255, 255, 0.616);
+    padding: 10px 20px;
+  }
+  .pending{
+    scale: 1;
+    background-color: rgba(0, 0, 0, 0.192);
+    border-radius: 3px;
+    color:$color1;
+  }
+  
 }

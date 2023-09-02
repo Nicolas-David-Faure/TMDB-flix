@@ -3,7 +3,7 @@ import React, { useEffect , useState } from 'react'
 import { useDispatch } from 'react-redux'
 
 //router
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 //axios
 import axios from 'axios'
 //styles
@@ -13,17 +13,22 @@ import searchIcon from '../../assets/icons/search.svg'
 import { setFilmsFounded } from '../../store/slice/filmsSlice/filmsSlice'
 
 const SearchFilms = () => {
+  const {pathname} = useLocation();
+  let type = pathname.split('/').at(-1)
+
   const navigate = useNavigate()                      //instance of useNaviagate
      //Context films
   const [ filmName , setFilmName ] = useState('');   
 
   const dispatch = useDispatch()
 
+  
+
   const handleSubmit = async( event )=>{
     if ( event ) {                  
       event.preventDefault();
     }                  
-    const result = await axios.get(`/api/movie/search/${filmName}`).then(({data: {results}})=>results)
+    const result = await axios.get(`/api/${type}/search/${filmName}`).then(({data: {results}})=>results)
     dispatch(setFilmsFounded(result))  
   }
 
@@ -32,8 +37,8 @@ const SearchFilms = () => {
 
     setFilmName( nameFilm )  
     
-    const toSearchOrBrowse = nameFilm !== '' ? '/search' : '/browse';   //if value is empty then go to the browse else search 
-    
+    const toSearchOrBrowse = nameFilm !== '' ? `/search/${type}` : `/browse/${type}`;   //if value is empty then go to the browse else search 
+
     navigate(toSearchOrBrowse)
   }
 
