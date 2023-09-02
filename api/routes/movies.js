@@ -85,7 +85,7 @@ router.get('/all/:page',async (req ,res)=>{
     }
   }).then(({data})=>{
 
-    
+  
     res.send(data)
   })
   .catch(err=>console.error(err))

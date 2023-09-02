@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api", routes);
 
-db.sync({ force: false }).then(() => {
+db.sync({ force:false}).then(() => {
   console.log("Db connected");
   app.listen(envs.PORT, () => {
     console.log(`Server listening at port ${envs.PORT}`);

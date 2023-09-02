@@ -12,21 +12,16 @@ const MoviesRecomended = () => {
   const { results  : films = []} = data ? data : {results: ''}
   const [randomFIlm, setRandomFilm] = useState(null)
   
-
-
   useEffect(()=>{
     setRandomFilm(Math.ceil(Math.random() * 20))
     const randomPage = Math.ceil(Math.random() * 20)
 
-    
     axios.get(`/api/movie/all/${randomPage}`)
             .then(response => setData(response.data))
             .catch(err => {
               const status = err.response?.status
               setData(status)
-            });
-
-      
+            });      
   },[])
 
   return (

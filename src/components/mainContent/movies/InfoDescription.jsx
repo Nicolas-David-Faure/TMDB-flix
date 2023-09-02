@@ -11,10 +11,12 @@ import xIcon from '../../../assets/icons/x.svg'
 const IMAGE_PATH = 'https://image.tmdb.org/t/p/original'
 const InfoDescription = ({ film }) => {
   const { filmGenres } = useSelector(store=> store.infoDescriptionSlice)
+  const { personalAside , thereWasChange, change } = useSelector(store => store.favoritesSlice)
   const dispatch = useDispatch()
 
   const handleCloseInfoDescription = () =>{ 
     dispatch(setFilmsDescription( null ))
+    if(!personalAside)
     document.body.style.overflow = 'auto';
   }
 
@@ -26,8 +28,6 @@ const InfoDescription = ({ film }) => {
 
   useEffect(()=>{
     document.body.style.overflow = 'hidden';
-    
-   
   },[])
 
   return (

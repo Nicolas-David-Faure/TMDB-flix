@@ -17,14 +17,12 @@ router.get('/:user_mail', async( req, res)=>{
 
 router.post('/add/:user_mail',async (req, res)=>{
   const { user_mail } = req.params;
-  const {title, id} = req.body;
+  const { title, id } = req.body;
   
 
-  console.log(user_mail)
-  
   const movie = await Movie.findOrCreate({
     where: { id },
-    defaults: { title, id}
+    defaults: req.body 
   }).then(movie=>movie)
   .catch(err=>console.error(err))
 
@@ -50,3 +48,6 @@ router.put('/remove', async(req,res)=>{
 
 
 module.exports = router
+
+
+

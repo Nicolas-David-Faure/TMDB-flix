@@ -27,8 +27,9 @@ A-Prioridad Alta (Must Have)
 
   Dia 3
   5-*Ver los detalles de una película o programa de televisión. //Completado
-  6-*Agregar/eliminar una película o programa a una lista de favoritos. //pending
-  7-*Ver tu lista de favoritos. //pending
+  6-*Agregar/eliminar una película o programa a una lista de favoritos. //completo
+  7-*Ver tu lista de favoritos. //completo
+  8-*Eliminar favoritos desde lista de favoritos
   
 B-Prioridad Media (Nice To Have)
   8-*Diferenciar las rutas de front-end para películas y programas de televisión.

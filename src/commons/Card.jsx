@@ -72,11 +72,19 @@ return (
     variants={displayFigcaption}>
 
       <div className='card__btn_cont'>
-        {film && <AddToFavorite film={film}/>}
+        <div className='card__btn_cont_first'>
+
+          <div className='card__play' onClick={()=>alert('reproduciendo..')}>{/*set film to a global state context to use on infoDescription.jsx*/}
+            <img src={playIcon} alt="description" />
+          </div>
+          {film && <AddToFavorite film={film}/>}
+        </div>
 
         <div className='card__show_description' onClick={()=>dispatch(setFilmsDescription(film))}>{/*set film to a global state context to use on infoDescription.jsx*/}
           <img src={arrowDonwIcon} alt="description" />
-        </div> 
+        </div>
+
+
       </div>
 
       <div className='card__desc_cont'> 

@@ -3,7 +3,9 @@ import axios from 'axios';
 
 const initialState = {
   personalAside: false,
-  isLoading: false
+  isLoading: false,
+  thereWasChange: false,
+  change: false
 }
 
 export const favoritesSlice = createSlice({
@@ -12,8 +14,14 @@ export const favoritesSlice = createSlice({
   reducers: {
     togglePersonalAside: ( state , payload )=>{
       state.personalAside = !state.personalAside
+    },
+    toggleThereWasChange: ( state , { payload } )=>{
+      state.thereWasChange = payload
+    },
+    toggleChange : (state, { payload })=>{
+      state.change = !state.change
     }
   }
 })
 // Action creators are generated for each case reducer function
-export const { togglePersonalAside } = favoritesSlice.actions
+export const { togglePersonalAside , toggleThereWasChange , toggleChange} = favoritesSlice.actions

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 //router
 import { NavLink } from 'react-router-dom'
 //redux
@@ -17,13 +17,15 @@ const Nav = () => {
   const { isLoggin , userInfo } = useSelector(store => store.userSlice)
   const [showList, setShowList] = useState(false)
 
+
+
   return (
     <nav className='nav__main'>
       {isLoggin ?
 
           <div className='nav__user'>
               <img onClick={ ()=>setShowList( ( prev )=> !prev ) } src={ userIcon } alt='user-icon' />
-             {showList && <UserOptions setShowList={ setShowList }/>}
+             {showList && <UserOptions isLoggin={isLoggin} setShowList={ setShowList }/>}
           </div>
                 :
           <>
@@ -46,19 +48,25 @@ const Nav = () => {
   )
 }
 
-const UserOptions = ({ setShowList })=>{
+const UserOptions = ({ setShowList , isLoggin})=>{
   const dispatch = useDispatch()
 
+ 
+ 
   const handleLogout=()=>{
     axios.post( '/api/user/logout' , {})
     .then(()=> dispatch(setUserInfo(401)) )
     .catch(err=> console.error(err) )
+    .finally(()=>setShowList(false))
+    
   }
 
   const handleTogglePersonalAside = ()=>{
     dispatch(togglePersonalAside())
     setShowList(false)
   }
+
+
   return(
     <div className='userOptions__main'>
       <ul>
