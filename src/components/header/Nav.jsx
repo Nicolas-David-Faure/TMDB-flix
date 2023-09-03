@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 //router
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 //redux
 import { useDispatch, useSelector } from 'react-redux'
 import { togglePersonalAside } from '../../store/slice/favoritesSlice'
@@ -71,16 +71,22 @@ const UserOptions = ({ setShowList , isLoggin})=>{
     <div className='userOptions__main'>
       <ul>
         <li onClick={handleTogglePersonalAside} >Ver favoritos</li>
-        <li>Buscar usuarios</li>
+        <li>
+          <Link
+          onClick={()=>setShowList(false)} 
+          to={'/users'}  >
+            Buscar Usuarios
+          </Link>
+        </li>
         <li>Recomendados</li>
         <li> 
-          <NavLink 
-                  className={({ isActive, isPending }) =>
-                  isPending ? "pending" : isActive ? "active" : ""}
-                  to={'/'} onClick={handleLogout} >
-                   Cerrar sesión
-                </NavLink>
-            </li>
+            <NavLink 
+              className={({ isActive, isPending }) =>
+              isPending ? "pending" : isActive ? "active" : ""}
+              to={'/'} onClick={handleLogout} >
+                Cerrar sesión
+            </NavLink>
+          </li>
       
          
       </ul>

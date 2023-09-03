@@ -1,6 +1,6 @@
 import React from 'react'
 //router
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 //redux
 import { useSelector } from 'react-redux'
 //styles
@@ -11,6 +11,8 @@ import SearchFilms from './SearchFilms'
 
 const Header = () => {
   const { isLoggin } = useSelector(store => store.userSlice)
+  const location = useLocation()
+  let actualLocation = location.pathname.split('/').at(-1)
   
   return (
     <header className='header__main'>
@@ -18,7 +20,7 @@ const Header = () => {
       <Link className='header__link_h1' to={'/browse/movie'}>
         <h1>TMDBFLIX</h1>
       </Link>
-      {isLoggin &&
+      {(isLoggin && actualLocation !== 'users') &&
       <>
           <NavLink
           className={({ isActive, isPending }) =>

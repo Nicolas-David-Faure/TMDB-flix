@@ -11,10 +11,9 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     toggleIsLoggin : ( state , { payload } )=>{
-
       state.isLoggin = payload
     },
-    setUserInfo: (state, {payload})=>{
+    setUserInfo: (state, { payload })=>{
       state.userInfo = payload
       state.isLoggin = typeof payload === 'object' ? true : false;
     }

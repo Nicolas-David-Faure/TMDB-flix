@@ -1,5 +1,5 @@
-export default function filterGenres (genres = [] , idGenres = []){
+// export default function filterGenres (genres = [] , idGenres = []){
 
 
   
-}
+// }

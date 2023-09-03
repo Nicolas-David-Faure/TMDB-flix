@@ -22,8 +22,6 @@ const SearchFilms = () => {
 
   const dispatch = useDispatch()
 
-  
-
   const handleSubmit = async( event )=>{
     if ( event ) {                  
       event.preventDefault();
@@ -34,11 +32,8 @@ const SearchFilms = () => {
 
   const handleChange =( event )=>{
     const nameFilm = event.target.value
-
     setFilmName( nameFilm )  
-    
     const toSearchOrBrowse = nameFilm !== '' ? `/search/${type}` : `/browse/${type}`;   //if value is empty then go to the browse else search 
-
     navigate(toSearchOrBrowse)
   }
 
@@ -51,7 +46,7 @@ const SearchFilms = () => {
   return (
     <form className='searchFilms__main' onSubmit={ handleSubmit }>
       <div>
-        <input type="text" name="searchFilm" value={ filmName } onChange={ handleChange } />
+        <input type="text" name="searchFilm" value={ filmName } onChange={ handleChange } /> 
           <button  onChange={ handleChange } type="submit" >
             <img src={ searchIcon } alt="search film" />
           </button>

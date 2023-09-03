@@ -1,2 +1,2 @@
-// export * from './filmsSlice';
+export * from './filmsSlice';
 // export * from './thunks'
