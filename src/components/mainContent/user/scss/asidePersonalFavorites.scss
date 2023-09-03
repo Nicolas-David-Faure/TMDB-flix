@@ -23,6 +23,39 @@
         height: 5rem;
         display: flex;
         place-content: center;
+        position: relative;
+        .asidePersonalFavorites__cont_switch{
+          position: absolute;
+          width: 95%;
+          height: 100%;
+          z-index: 53;  
+          padding: 20px;
+          border-radius: 3px;
+          justify-content: center;
+          cursor: pointer;
+          
+          h2{
+            text-align: center;
+            text-decoration: underline;
+          }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       .asidePersonalFavorites__cont_title2{
         position: relative;
@@ -39,7 +72,7 @@
           text-decoration: underline;
           text-shadow: -2px 1px 10px rgb(70, 70, 70);
         }
-        .asidePersonalFavorites__btn_save{
+        .asidePersonalFavorites__btn_save, .asidePersonalFavorites__btn_switch{
           position: absolute;
           z-index: 52;
           top: 20px;
@@ -57,9 +90,18 @@
             height: 40px;
           }
         }
+
         .asidePersonalFavorites__btn_save:hover{
           border: 1px solid rgb(173, 173, 173);
           background-color: rgba(49, 158, 76, 0.466);
+        }
+
+        .asidePersonalFavorites__btn_switch{
+          
+          left: 85%;
+        }
+        .asidePersonalFavorites__btn_switch:hover{
+          border: 1px solid rgba(255, 255, 255, 0.589);
         }
       }
     }
