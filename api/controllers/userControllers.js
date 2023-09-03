@@ -19,13 +19,13 @@ const register = (req, res, next) => {
 
 const login = (req,res)=>{
   const{email,password}=req.body
-  User.findOne({
-    where:{email},
- 
-    })
+
+  User.findOne( { where : { email } } )
     .then(user=>{
-      if(!user)res.sendStatus(401)
+      if( ! user ) res.sendStatus(401)
+      
       user.validatePassword(password)
+
       .then(isValidate=>{
         if(!isValidate) res.sendStatus(401)
         else{

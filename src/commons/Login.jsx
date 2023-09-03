@@ -24,7 +24,7 @@ const Login = () => {
     axios.post('/api/user/login', userInfo)
     .then((res)=>{
       setUserInfoState(cleanStateObj)
-      navigate('/browse/movies')
+      navigate('/browse/movie')
     })
   }
 

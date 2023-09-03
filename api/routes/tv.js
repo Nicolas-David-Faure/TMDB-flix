@@ -21,28 +21,27 @@ router.get('/all/:page',async (req ,res)=>{
     }
   }).then(({data})=>{
 
-  
     res.send(data)
   })
   .catch(err=>console.error(err))
 })
 
-// router.get('/search/:film',async (req ,res)=>{
-//   const { film } = req.params;
-//   const type = 'search';
+router.get('/search/:film',async (req ,res)=>{
+  const { film } = req.params;
+  const type = 'search';
 
-//   await axios.get(`${API_URL}/${type}/tv`,{
-//     params:{
-//       api_key: API_KEY,
-//       language:'es',
-//       include_video: true,
-//       query: film
-//     }
-//   }).then(({data})=>{
-//     res.send(data)
-//   })
-//   .catch(err=>console.error(err))
-// })
+  await axios.get(`${API_URL}/${type}/tv`,{
+    params:{
+      api_key: API_KEY,
+      language:'es',
+      include_video: true,
+      query: film
+    }
+  }).then(({data})=>{
+    res.send(data)
+  })
+  .catch(err=>console.error(err))
+})
 
 
 

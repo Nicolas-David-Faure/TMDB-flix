@@ -23,8 +23,6 @@ router.get("/me", validateUser, getMe);
 router.get("/secret", validateUser,secret);
 
 
-
-
 router.use("/", function (req, res) {
   res.sendStatus(404);
 });

@@ -20,6 +20,9 @@ background: linear-gradient(0deg, rgba(79, 53, 53, 0) 0%, rgba(0,0,0,1) 70%);
     color: $color3;
   }
 
+  .header__link_h1:hover{
+    color: $color1;
+  }
   .active{
     scale: 1.1;
     background-color: rgba(189, 11, 11, 0.658);

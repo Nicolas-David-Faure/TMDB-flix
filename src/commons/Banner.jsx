@@ -21,8 +21,6 @@ const Banner = ({ film , activeBtnInfo = true }) => {
   const dispatch = useDispatch()
   let nameOrTitle = type === 'tv' ? 'name' : 'title'
 
-
-
   let lengthTitle = film?.[ nameOrTitle ]?.split(' ').length
  
   const canIRenderMoreInfoBtn = (film && activeBtnInfo)

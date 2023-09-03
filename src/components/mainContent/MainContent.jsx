@@ -4,7 +4,6 @@ import { useSelector , useDispatch } from 'react-redux'
 import { toggleIsLoggin , setUserInfo} from '../../store/slice/userSlice/userSlice'
 //axios
 import axios from 'axios'
-
 //styles
 import './sass/mainContent.scss'
 //components

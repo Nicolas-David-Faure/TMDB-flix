@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const userRouter = require('./user')
 const movieRouter = require('./movies')
-const favoritesRouter = require('./favorites')
+const favoritesRouter = require('./favorites/favorites')
 const tvRouter = require('./tv')
 
 router.use('/user', userRouter)

@@ -31,13 +31,13 @@ const Nav = () => {
           <>
             <NavLink 
               className={( { isActive, isPending } ) =>
-              isPending ? "pending" : isActive ? "active" : ""}
+              isPending ? "pendingNav" : isActive ? "activeNav" : ""}
               to={'/auth_panel?type=register'}>
                 <button>Registrate</button>
             </NavLink>    
             <NavLink 
               className={( { isActive, isPending } ) =>
-              isPending ? "pending" : isActive ? "active" : ""}
+              isPending ? "pendingNav" : isActive ? "activeNav" : ""}
               to={'/auth_panel?type=login'}>
                 <button>Ingresar</button>
             </NavLink>
