@@ -13,12 +13,13 @@ const IMAGE_PATH = 'https://image.tmdb.org/t/p/original'
 
 const Banner = ({ film , activeBtnInfo = true }) => {
   const {pathname} = useLocation();
-  let type = pathname.split('/').at(-1) 
-  
 
+
+  let type = pathname.split('/').at(-1) 
 
   const {userLoggin} = useSelector(store=> store.userSlice)
   const dispatch = useDispatch()
+
   let nameOrTitle = type === 'tv' ? 'name' : 'title'
 
   let lengthTitle = film?.[ nameOrTitle ]?.split(' ').length

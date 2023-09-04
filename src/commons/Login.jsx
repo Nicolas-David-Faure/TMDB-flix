@@ -14,7 +14,7 @@ import {  useDispatch } from 'react-redux'
 import { setUserInfo } from '../store/slice/userSlice/'
 const Login = () => {
   const dispatch = useDispatch()
-
+  
   const [ userInfo , setUserInfoState ] = useState({ email: '', password: '' })
 
   const navigate = useNavigate()
@@ -25,6 +25,11 @@ const Login = () => {
     .then((res)=>{
       setUserInfoState(cleanStateObj)
       navigate('/browse/movie')
+    })
+    .catch(({response})=>{
+      const status = response.status
+
+      if(status === 401) alert('Contraseña Incorrecta')
     })
   }
 

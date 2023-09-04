@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 //redux
 import { useSelector , useDispatch } from 'react-redux'
-import { toggleIsLoggin , setUserInfo} from '../../store/slice/userSlice/userSlice'
+import { setUserInfo } from '../../store/slice/userSlice/userSlice'
 //axios
 import axios from 'axios'
 //styles
@@ -15,6 +15,7 @@ const MainContent = () => {
   //const [userLogged, setLoginUser] = useState(null)
   const favoritesSlice = useSelector(store=> store.favoritesSlice)
   const user = useSelector(store => store.userSlice)
+
   const userIsLogged = user.isLoggin
 
   const dispatch = useDispatch()

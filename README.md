@@ -1,7 +1,7 @@
 Para ejecutar la aplicación completa:
 ---->1-Crear base de datos psql llamada 'tmdbflix'
 ---->2-Para levantar el back-end ir a /api, istalar las dependencias "npm i" y npm start para leventar el sv
----->3-Para levantar el front-end ir a /src, istalar las dependencias "npm i" y npm run dev para levantar el sv
+---->3-Para levantar el front-end istalar las dependencias "npm i" directamente desde la carpeta tmdb-flix y npm run dev para levantar el sv
 
 -Creado con vite
 
@@ -30,11 +30,16 @@ A-Prioridad Alta (Must Have)
   //Día 4 y 5
   6-*Agregar/eliminar una película o programa a una lista de favoritos. //completo
   7-*Ver tu lista de favoritos. //completo
+  //dia 6
   8-*Eliminar favoritos desde lista de favoritos // completo
   
 B-Prioridad Media (Nice To Have)
+  dia 6
   8-*Diferenciar las rutas de front-end para películas y programas de televisión.
-  9-*Buscar usuarios.
-  10-*Ver el perfil de un usuario específico (con sus películas o programas favoritos).
-  11-*Full responsive.
+
+
+//Pending
+  9-*Full responsive.
+  10-*Buscar usuarios.
+  11-*Ver el perfil de un usuario específico (con sus películas o programas favoritos).
   12-*Loguear usuarios a través de su cuenta en Google.   
