@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
+//famer-motion
+import { motion } from 'framer-motion'
 //router
-import { Link, NavLink } from 'react-router-dom'
+import { Link , NavLink } from 'react-router-dom'
 //redux
 import { useDispatch, useSelector } from 'react-redux'
 import { togglePersonalAside } from '../../store/slice/favoritesSlice'
@@ -12,20 +14,30 @@ import './sass/nav.scss'
 //icons
 import userIcon from '../../assets/icons/user.svg'
 
-
 const Nav = () => {
   const { isLoggin , userInfo } = useSelector(store => store.userSlice)
-  const [showList, setShowList] = useState(false)
+  const [ showList, setShowList ] = useState(false)
+  const [ animateList , setAnimateList ] = useState(false)
 
-
+  const handleSetShowList =()=> {
+    setAnimateList(prev => !prev)
+    if(showList){
+      setTimeout(()=>{
+        setShowList(false)
+      }, 200)
+    }
+    else{
+      setShowList(true)
+    }
+  }
 
   return (
     <nav className='nav__main'>
       {isLoggin ?
 
           <div className='nav__user'>
-              <img onClick={ ()=>setShowList( ( prev )=> !prev ) } src={ userIcon } alt='user-icon' />
-             {showList && <UserOptions isLoggin={isLoggin} setShowList={ setShowList }/>}
+              <img onClick={handleSetShowList} src={ userIcon } alt='user-icon' />
+             {showList && <UserOptions isLoggin={isLoggin} animateList={animateList} setShowList={ handleSetShowList }/>}
           </div>
                 :
           <>
@@ -48,27 +60,33 @@ const Nav = () => {
   )
 }
 
-const UserOptions = ({ setShowList , isLoggin})=>{
+const UserOptions = ({ animateList , setShowList , isLoggin})=>{
   const dispatch = useDispatch()
 
- 
- 
   const handleLogout=()=>{
     axios.post( '/api/user/logout' , {})
     .then(()=> dispatch(setUserInfo(401)) )
     .catch(err=> console.error(err) )
-    .finally(()=>setShowList(false))
+    .finally(()=>setShowList())
     
   }
 
   const handleTogglePersonalAside = ()=>{
     dispatch(togglePersonalAside())
-    setShowList(false)
+    setShowList()
   }
 
+  const handleAnimate = {
+    on: {y: 0 , opacity: 1},
+    off: { y:-200 ,  opacity : 0}
+  }
 
   return(
-    <div className='userOptions__main'>
+    <motion.div
+    initial={'off'}
+    animate={animateList ? 'on' : 'off'}
+    variants={handleAnimate}
+    className='userOptions__main'>
       <ul>
         <li onClick={handleTogglePersonalAside} >Ver favoritos</li>
         <li>
@@ -90,7 +108,7 @@ const UserOptions = ({ setShowList , isLoggin})=>{
       
          
       </ul>
-    </div>
+    </motion.div>
     
   )
 }

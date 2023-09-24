@@ -9,7 +9,9 @@ const Slider = ( { films } ) => {
   
   return (
 
-    <div className='slider__main'>
+    <div 
+    
+    className='slider__main'>
 
       {
         films?.map((film)=>(

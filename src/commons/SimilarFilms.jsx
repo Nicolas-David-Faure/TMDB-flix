@@ -22,7 +22,7 @@ const SimilarFilms = ({ genres , films , nameOrTitle }) => {
         const needLastThreePoints =film.overview.length > 130 ? true : false
         const overview = film.overview !== '' ? truncateString(film.overview,150,needLastThreePoints) : 'Descripción no encontrada...' 
         return(
-          <li >
+          <li key={film.id} >
           <img className='similarFilms__image' src={film.backdrop_path ? IMAGE_PATH+film.backdrop_path : imageNotFound} alt={film.title} />
           <figcaption>
             <h2>{film[nameOrTitle]}</h2>
