@@ -12,9 +12,11 @@ import { setFilmsDescription } from '../store/slice/infoDescription/infoDescript
 import AddToFavorite from './AddToFavorite'
 //icons
 import arrowDonwIcon from '../assets/icons/arrowDown.svg'
-import playIcon from '../assets/icons/play.svg'
+
 //img
 import IMG_NOT_FOUND from '../assets/images/image-not-found-1-scaled.png'
+import PlayButton from './PlayButton'
+import DescriptionButton from './DescriptionButton'
 
 const Card = ({ film }) => {
   const {pathname} = useLocation();
@@ -48,7 +50,7 @@ const Card = ({ film }) => {
       onHoverEnd={handleMouseLeave} //if is not on hover the state is hover pass to false
       >
       <figure>
-        <img src={ ifThereAreImage } alt={ film[nameOrTitle] } />
+        <img className='card__image' src={ ifThereAreImage } alt={ film[nameOrTitle] } />
 
         <InfoCard 
           film={film} 
@@ -82,17 +84,11 @@ return (
 
       <div className='card__btn_cont'>
         <div className='card__btn_cont_first'>
-
-          <div className='card__play' onClick={()=>alert('reproduciendo..')}>{/*set film to a global state context to use on infoDescription.jsx*/}
-            <img src={playIcon} alt="description" />
-          </div>
+          <PlayButton />
+          
           {film && <AddToFavorite film={film}/>}
         </div>
-
-        <div className='card__show_description' onClick={()=>dispatch(setFilmsDescription(film))}>{/*set film to a global state context to use on infoDescription.jsx*/}
-          <img src={arrowDonwIcon} alt="description" />
-        </div>
-
+        <DescriptionButton film={film}/>
 
       </div>
 

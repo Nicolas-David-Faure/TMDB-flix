@@ -1,0 +1,55 @@
+.similarFilms__main{
+  width: 100%;
+  overflow-y: auto;
+  padding: 0 50px;
+
+  margin-top: 20px;
+  h2{
+    text-align: start;
+    text-shadow: -2px 1px 10px black;
+  }
+  li{
+    width: 100%;
+    padding: 20px;
+    height: 160px;
+    
+    margin: 20px 0;
+    display: flex;
+    border-radius: 5px;
+    box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.281);
+    .similarFilms__image{
+      width: 200px;
+      border-radius: 5px;
+      box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.281);
+
+    }
+    figcaption{
+   
+      text-align: start;
+      padding: 10px;
+     
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 100%;
+      .similarFilms__overview{
+
+      }
+
+
+      .similarFilms__cont_btns{
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        left: 96%;
+        top: 0;
+        
+        height: 8.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+    }
+  }
+}

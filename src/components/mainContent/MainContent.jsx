@@ -10,6 +10,7 @@ import './sass/mainContent.scss'
 import AsidePersonalFavorites from './user/AsidePersonalFavorites'
 import Start  from './Start'
 import Movies from './movies/Movies'
+import { handleClickOutSide } from '../../store/slice/searchSlice'
 //
 const MainContent = () => {
   //const [userLogged, setLoginUser] = useState(null)
@@ -30,10 +31,9 @@ const MainContent = () => {
           dispatch(setUserInfo(status))
         })
   },[])
-
   
   return (
-    <main className='mainContent__main'>
+    <main onClick={()=>dispatch(handleClickOutSide())}  className='mainContent__main'>
       {ifAsideOfFavorites && <AsidePersonalFavorites />}
       {userIsLogged ? <Movies /> : <Start /> }
     </main>

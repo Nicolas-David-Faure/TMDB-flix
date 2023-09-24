@@ -1,4 +1,6 @@
-import React, { useEffect } from 'react'
+import React, { useEffect , useState } from 'react'
+//framer-motion
+import { motion } from 'framer-motion'
 //router
 import { useLocation } from 'react-router-dom'
 //style
@@ -8,12 +10,13 @@ import { useSelector , useDispatch } from 'react-redux'
 import { setFilmsDescription } from '../../../store/slice/infoDescription/infoDescriptionSlice'
 //commons
 import Banner from '../../../commons/Banner'
+import SimilarFilms from '../../../commons/SimilarFilms'
 //icons
 import xIcon from '../../../assets/icons/x.svg'
+import axios from 'axios'
 const IMAGE_PATH = 'https://image.tmdb.org/t/p/original'
 const InfoDescription = ({ film }) => {
-  
-
+  const [ similarFilms , setSimilarMovies ] = useState(null)
   const { filmGenres } = useSelector(store=> store.infoDescriptionSlice)
   const { personalAside , thereWasChange, change } = useSelector(store => store.favoritesSlice)
   const dispatch = useDispatch()
@@ -23,20 +26,29 @@ const InfoDescription = ({ film }) => {
     if(!personalAside)
     document.body.style.overflow = 'auto';
   }
-
-//{{overview,title,genre_ids,video}}
+  const movieOrTv = Object.keys(film).includes('name') ? 'tv' : 'movie'; 
 
   const genresMovie = filmGenres.filter( ( genre ) => film.genre_ids.includes(genre.id) );
 
   let genresString = genresMovie.map( ( { name } )=>( ` ${ name }` ) ).toString()
-
+  
   useEffect(()=>{
     document.body.style.overflow = 'hidden';
+    axios.get(`/api/${ movieOrTv }/similar/${ film.id }`)
+    .then(({data})=>{
+      
+      setSimilarMovies(data)
+    })
   },[])
 
   return (
     <span onClick={handleCloseInfoDescription} className='infoDescription__main'>
-      <article onClick={(e)=>e.stopPropagation()}>
+      <motion.article
+      initial={{y:'100vh', opacity:0}}
+      animate={{y:0, opacity:1, transition:{
+        duration:.3, type:'spring', stiffness: 80
+      }}}
+      onClick={(e)=>e.stopPropagation()}>
 
         <img 
           className='infoDescription__btn_close' 
@@ -47,7 +59,9 @@ const InfoDescription = ({ film }) => {
 
         <Description film={film} genresString={genresString}/>
 
-      </article>
+        
+        <SimilarFilms genres={genresString} nameOrTitle={movieOrTv === 'tv' ? 'name' : 'title'} films={similarFilms} />
+      </motion.article>
     </span>
   )
 }

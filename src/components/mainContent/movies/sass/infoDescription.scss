@@ -18,12 +18,14 @@
     position: relative;
     z-index: 101;
     width: 70%;
-    height: 1000px;
-    
+    height: auto;
+    height: 1500px;
     border-radius: 5px;
     margin-top: 30px;
     background-color: rgb(31, 31, 31);
-
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 50px;
     .infoDescription__btn_close{
       position: absolute;
       top: 5px;
@@ -42,7 +44,7 @@
 
     .infoDescription__description{
       width: 100%;
-      height: 30%;
+      height: 15rem;
 
     
       display: flex;

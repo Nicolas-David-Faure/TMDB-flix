@@ -1,7 +1,10 @@
-import React, { useEffect , useState } from 'react'
+import React, { useEffect , useRef, useState } from 'react'
+//framer-motion
+import { motion } from 'framer-motion'
 //redux
-import { useDispatch } from 'react-redux'
-
+import { useDispatch, useSelector } from 'react-redux'
+import { handleToogleDisplaySearch } from '../../store/slice/searchSlice' 
+import { setFilmsFounded } from '../../store/slice/filmsSlice/filmsSlice'
 //router
 import { useLocation, useNavigate } from 'react-router-dom'
 //axios
@@ -10,12 +13,14 @@ import axios from 'axios'
 import './sass/searchFilms.scss'
 //icons
 import searchIcon from '../../assets/icons/search.svg'
-import { setFilmsFounded } from '../../store/slice/filmsSlice/filmsSlice'
 
 const SearchFilms = () => {
+  const {showInputSearch} = useSelector(store=>store.searchSlice)
+ 
+  
   const {pathname} = useLocation();
   let type = pathname.split('/').at(-1)
-
+  
   const navigate = useNavigate()                      //instance of useNaviagate
      //Context films
   const [ filmName , setFilmName ] = useState('');   
@@ -37,19 +42,42 @@ const SearchFilms = () => {
     navigate(toSearchOrBrowse)
   }
 
+
+  const handleActiveInput = () =>{
+    dispatch(handleToogleDisplaySearch())
+   
+  }
+  
   useEffect(() => {
     //if filmName change then send a get between 400ms to avoid to many gets   
     const delayTimeout = setTimeout(() =>filmName.trim() !== '' && handleSubmit(), 400);
     return () => clearTimeout( delayTimeout );
   }, [ filmName ]);
 
+
+  const animateInput = {
+    visible:{width:0, opacity:0 }
+
+    ,
+    hidden:{width:'auto', opacity:1},
+  }
   return (
-    <form className='searchFilms__main' onSubmit={ handleSubmit }>
+    <form onClick={(e)=>e.stopPropagation()} className='searchFilms__main' onSubmit={ handleSubmit }>
       <div>
-        <input type="text" name="searchFilm" value={ filmName } onChange={ handleChange } /> 
-          <button  onChange={ handleChange } type="submit" >
-            <img src={ searchIcon } alt="search film" />
-          </button>
+           
+            <motion.input
+              initial='hidden'
+              animate={!showInputSearch ? 'visible' : 'hidden'}
+              variants={animateInput}
+              type="text" 
+              name="searchFilm" 
+              value={ filmName } 
+              onChange={ handleChange } /> 
+            <img 
+              onClick={handleActiveInput}
+              src={ searchIcon } 
+              alt="search film" />
+        
       </div>
     </form>
   )

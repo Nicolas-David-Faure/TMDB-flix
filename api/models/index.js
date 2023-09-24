@@ -22,6 +22,31 @@ const MovieUser = sequelize.define('movie_user', {
   }
 });
 
+
+User.belongsToMany(Movie, {through: MovieUser})
+Movie.belongsToMany(User, {through: MovieUser})
+
+MovieUser.belongsTo(User)
+MovieUser.belongsTo(Movie)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const TvUser = sequelize.define('tv_user', {
   id: {
     type: DataTypes.INTEGER,
@@ -44,13 +69,5 @@ TV.belongsToMany(User, {through: TvUser})
 
 TvUser.belongsTo(User)
 TvUser.belongsTo(TV)
-
-
-
-User.belongsToMany(Movie, {through: MovieUser})
-Movie.belongsToMany(User, {through: MovieUser})
-
-MovieUser.belongsTo(User)
-MovieUser.belongsTo(Movie)
 
 module.exports = {User ,Movie , MovieUser , TvUser , TV};

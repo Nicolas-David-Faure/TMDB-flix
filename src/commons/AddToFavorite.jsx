@@ -22,7 +22,7 @@ const AddToFavorite = ({ film  }) => {
     isMovieOrTv = Object.keys(film).includes('name') ? 'tv' : 'movie';
   }
   let MovieOrTvInfo ={
-        tv:{
+                    tv:{
                       first_air_date : film?.first_air_date,   
                       name: film?.name,
                       id: film?.id,

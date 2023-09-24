@@ -14,7 +14,6 @@ const IMAGE_PATH = 'https://image.tmdb.org/t/p/original'
 const Banner = ({ film , activeBtnInfo = true }) => {
   const {pathname} = useLocation();
 
-
   let type = pathname.split('/').at(-1) 
 
   const {userLoggin} = useSelector(store=> store.userSlice)

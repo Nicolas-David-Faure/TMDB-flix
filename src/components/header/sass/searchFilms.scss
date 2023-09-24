@@ -2,43 +2,32 @@
 
 .searchFilms__main{
   height: 4em;
-  
   padding: 0 10px;
   border-radius: 3px;
-  border: 1px solid rgb(122, 117, 117);
-  box-shadow: 0px 0px 10px rgb(39, 38, 38);
   display: flex;
   place-content: center;
-
+ 
   div{
     display: flex;
     align-items: center;
-    flex-direction: row-reverse;
-
-    button{
-      place-content: center;
-      background-color: transparent;
-      display: flex;
-      margin-right: 5px;
-
+    position: relative;
       img{
-        width: 30px;
-        height: 100%;
+        
+        width: 35px;
+        height: 35px;
+       
+        cursor: pointer;
       }
-    }
-    button:hover{
-      border: 1px solid rgb(73, 73, 73);
-    }
-
 
     input{
       outline: none;
       height: 2.8rem;
       text-align: center;
       font-size: 1.2rem;
-      background-color: rgba(0, 0, 0, 0.178);
-      border: 1px solid rgb(73, 73, 73);
+      background-color: rgba(190, 189, 189, 0.5);
+      border: none;
       border-radius: 3px;
+     
     }
   }
 

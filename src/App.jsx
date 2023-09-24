@@ -7,18 +7,14 @@ import './App.scss'
 import Header from './components/header/Header'
 import AuthPanel from './components/header/AuthPanel'
 import MainContent from './components/mainContent/MainContent'
-import axios from 'axios'
+
 import Footer from './components/footer/Footer'
 
 function App() {
 
 
-
-  
   return (
     <div className='app__main'>
-
-
       <Header />
       <main>
         <Routes>

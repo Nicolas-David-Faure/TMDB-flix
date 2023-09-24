@@ -1,0 +1,19 @@
+.playButton__main{
+    width: 40px;
+    height: 40px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    background-color: transparent;
+    border-radius: 50%;
+    transition: ease all .2s;
+    box-shadow: 0px 2px 10px rgb(85, 24, 24);
+    margin-right: 10px;
+    img{
+      width: 40px;
+      height: 40px;
+    }
+  }
+.playButton__main:hover{
+    background-color: rgba(141, 3, 3, 0.959);
+    scale: 1.05;
+  }

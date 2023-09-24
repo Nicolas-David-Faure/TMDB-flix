@@ -16,11 +16,9 @@ const FilmsRecomended = ( { type = 'movie' } ) => {
   
  
   useEffect(()=>{
-
     setRandomFilm(Math.ceil(Math.random() * 20))
-    const randomPage = Math.ceil(Math.random() * 20)
-
-    axios.get(`/api/${type}/all/${randomPage}`)
+  
+    axios.get(`/api/${type}/all/${randomFIlm}`)
             .then(response => setData(response.data))
             .catch(err => {
               const status = err.response?.status

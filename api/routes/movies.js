@@ -58,6 +58,7 @@ router.get('/video/:movie_id', async(req, res)=>{
 
 router.get('/similar/:movie_id', async(req,res)=>{
   const {movie_id} = req.params
+
   await axios.get(`https://api.themoviedb.org/3/movie/${movie_id}/similar`,{
         params:{
           api_key: API_KEY,
