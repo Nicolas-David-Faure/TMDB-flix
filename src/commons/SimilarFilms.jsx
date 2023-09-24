@@ -10,19 +10,15 @@ import AddToFavorite from './AddToFavorite'
 import PlayButton from './PlayButton'
 import DescriptionButton from './DescriptionButton'
 
-
-
-const SimilarFilms = ({ genres , films , nameOrTitle}) => {
+const SimilarFilms = ({ genres , films , nameOrTitle }) => {
   const IMAGE_PATH = 'https://image.tmdb.org/t/p/original'
-  const arrFilms = films?.results;
-  
-
+  const arrFilms = films?.results;  
+  const existArr = arrFilms?.length > 0 ? true : false;
 
   return (
     <ul className='similarFilms__main'>
-      <h2>Otros titulos similares</h2>
+      <h2>{existArr ? 'Otros titulos similares' : 'Titulos similares no encontrados..'}</h2>
       {arrFilms?.map(film =>{
-        
         const needLastThreePoints =film.overview.length > 130 ? true : false
         const overview = film.overview !== '' ? truncateString(film.overview,150,needLastThreePoints) : 'Descripción no encontrada...' 
         return(
