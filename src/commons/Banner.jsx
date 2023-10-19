@@ -11,6 +11,8 @@ import IMG_NOT_FOUND from '../assets/images/image-not-found-1-scaled.png'
 import { useLocation } from 'react-router-dom'
 const IMAGE_PATH = 'https://image.tmdb.org/t/p/original'
 
+
+
 const Banner = ({ film , activeBtnInfo = true }) => {
   const {pathname} = useLocation();
 
