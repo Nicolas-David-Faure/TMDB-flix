@@ -14,7 +14,7 @@ const FilmsPlay = ( ) => {
     <section className='filmsPlay__main'>
       {
         filmKey &&
-      <ReactPlayer url={`https://www.youtube.com/watch?v=${filmKey}`} />
+      <ReactPlayer width={'80%'} height={550} controls={true} url={`https://www.youtube.com/watch?v=${filmKey}`} />
       }
     </section>
   )

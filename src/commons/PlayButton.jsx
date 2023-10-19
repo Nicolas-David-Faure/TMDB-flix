@@ -7,7 +7,7 @@ import playIcon from "../assets/icons/play.svg";
 //axios
 import axios from "axios";
 
-const PlayButton = ({ film: { id } , film}) => {
+const PlayButton = ({ film: { id } , film , isBanner=false}) => {
   const navigate = useNavigate();
 
   const isMovieOrTv = !Object.keys(film).includes('name') ? 'movie' : 'tv';
@@ -28,10 +28,20 @@ const PlayButton = ({ film: { id } , film}) => {
   };
 
   return (
-    <div className="playButton__main" onClick={handleFilmToPlay}>
+    <>
+    {
+      !isBanner ? 
+      <div className="playButton__main" onClick={handleFilmToPlay}>
       {/*set film to a global state context to use on infoDescription.jsx*/}
       <img src={playIcon} alt="description" />
     </div>
+      :
+      <button onClick={handleFilmToPlay}>Reproducir</button>
+    
+}    
+    </>
+
+
   );
 };
 
