@@ -59,7 +59,6 @@ const InfoDescription = ({ film }) => {
 
         <Description film={film} genresString={genresString}/>
 
-        
         <SimilarFilms genres={genresString} nameOrTitle={movieOrTv === 'tv' ? 'name' : 'title'} films={similarFilms} />
       </motion.article>
     </span>

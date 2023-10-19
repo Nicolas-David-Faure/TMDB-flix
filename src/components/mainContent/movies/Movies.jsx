@@ -13,6 +13,7 @@ import FilmsSearched from './FilmsSearched'
 import InfoDescription from './InfoDescription'
 import FilmsRecomended from './FilmsRecomended'
 import SearchUsers from '../user/searchUsers/SearchUsers'
+import FilmsPlay from './FilmsPlay'
 
 
 const Movies = () => {
@@ -40,6 +41,7 @@ const Movies = () => {
         <Route path={`/browse/tv`} element={ <FilmsRecomended type='tv' /> }/>
         <Route path={`/search/${type}`} element={ <FilmsSearched /> }/>
         <Route path='/users' element={<SearchUsers />} />
+        <Route path='/play_film/*' element={<FilmsPlay />}/>
       </Routes>
     
     </section>

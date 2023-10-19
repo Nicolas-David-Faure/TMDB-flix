@@ -84,7 +84,7 @@ return (
 
       <div className='card__btn_cont'>
         <div className='card__btn_cont_first'>
-          <PlayButton />
+          <PlayButton film={film} />
           
           {film && <AddToFavorite film={film}/>}
         </div>

@@ -162,7 +162,7 @@
           }
 
 
-          .listOfFavorite__show_description , .listOfFavorite__play{
+          .listOfFavorite__show_description{
             width: 40px;
             height: 40px;
 
@@ -177,11 +177,6 @@
               height: 100%;
             }
           }
-          
-          .listOfFavorite__play:hover{
-              background-color: rgba(141, 3, 3, 0.959);
-              scale: 1.05;
-            }
 
           .listOfFavorite__show_description:hover{
             scale: 1.1;
