@@ -12,13 +12,10 @@ const FilmsRecomended = ( { type = 'movie' } ) => {
 
   const [data,setData] = useState(null)
   const { results  : films = []} = data ? data : {results: ''}
-  const [randomFIlm, setRandomFilm] = useState(null)
   
  
   useEffect(()=>{
-    setRandomFilm(Math.ceil(Math.random() * 20))
-  
-    axios.get(`/api/${type}/all/${randomFIlm}`)
+    axios.get(`/api/${type}/all/${1}`)
             .then(response => setData(response.data))
             .catch(err => {
               const status = err.response?.status
@@ -29,7 +26,7 @@ const FilmsRecomended = ( { type = 'movie' } ) => {
   return (
     <div className='moviesRecomended__main'>
 
-      <Banner film={films[randomFIlm]}/>
+      <Banner film={films[1]}/>
       {data && <Slider films={films}/>}
     </div>
   )

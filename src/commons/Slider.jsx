@@ -5,14 +5,10 @@ import './sass/slider.scss'
 import Card from './Card'
 
 const Slider = ( { films } ) => {
-  
-  
+
   return (
-
     <div 
-    
     className='slider__main'>
-
       {
         films?.map((film)=>(
           <Card  film={film} key={film.id}/>
