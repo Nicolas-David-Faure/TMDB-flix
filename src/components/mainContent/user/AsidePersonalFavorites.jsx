@@ -22,6 +22,7 @@ import playIcon from "../../../assets/icons/play.svg";
 import doubleArrowDownIcon from "../../../assets/icons/arrowDoubleDown.svg";
 //img
 import IMG_NOT_FOUND from "../../../assets/images/image-not-found-1-scaled.png";
+import PlayButton from "../../../commons/PlayButton";
 
 const AsidePersonalFavorites = () => {
   const { personalAside, thereWasChange, change } = useSelector(
@@ -201,15 +202,7 @@ const ListOfFavorite = ({ fav, is }) => {
         <figcaption>
           <div>
             <AddToFavorite film={fav} />
-
-            <div
-              className="listOfFavorite__play"
-              onClick={() => alert("reproduciendo..")}
-            >
-              {/*set film to a global state context to use on infoDescription.jsx*/}
-              <img src={playIcon} alt="description" />
-            </div>
-
+            <PlayButton film={fav}/>
             <div
               className="listOfFavorite__show_description"
               onClick={() => dispatch(setFilmsDescription(fav))}

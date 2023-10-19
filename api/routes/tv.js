@@ -60,6 +60,23 @@ router.get('/similar/:tv_id', async(req,res)=>{
 })
 
 
+router.get('/video/:serie_id', async(req, res)=>{
+  const {serie_id} = req.params
+  
+  await axios.get(`https://api.themoviedb.org/3/tv/${serie_id}/videos`,{
+    params:{
+      api_key: API_KEY,
+      
+    }
+  })
+  .then(({data})=>{
+    res.send(data)
+  })
+  .catch(err=>{
+    console.error(err)
+  })
+})
+
 
 
 
