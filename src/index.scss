@@ -5,6 +5,8 @@
   margin: 0;
 }
 
+
+
 :root {
   font-family: 'Roboto', sans-serif, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -34,8 +36,10 @@ a:hover {
 
 body {
   margin: 0;
-  min-width: 360px;
   min-height: 100vh;
+
+  position: absolute;
+
 }
 
 h1 {

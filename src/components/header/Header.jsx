@@ -22,7 +22,7 @@ const Header = () => {
           <h1>TMDBFLIX</h1>
         </Link>
         {(isLoggin && actualLocation !== 'users') &&
-        <>
+        <div className='header__links_a' >
             <NavLink
             className={({ isActive, isPending }) =>
             isPending ? "pending header__link" : isActive ? "active header__link" : "header__link"}  
@@ -33,7 +33,7 @@ const Header = () => {
             to={'/browse/tv'} >TV</NavLink>
         
 
-      </>
+      </div>
         }
       
       </div>

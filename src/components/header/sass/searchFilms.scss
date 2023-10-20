@@ -2,13 +2,16 @@
 
 .searchFilms__main{
   height: 4em;
-  padding: 0 10px;
+
   border-radius: 3px;
   display: flex;
   place-content: center;
- 
+  border: none;
+  box-shadow: none;
+  padding: 0;
   div{
     display: flex;
+    flex-direction: row-reverse;
     align-items: center;
     position: relative;
       img{
@@ -27,18 +30,30 @@
       background-color: rgba(190, 189, 189, 0.5);
       border: none;
       border-radius: 3px;
-     
+      max-width: 10rem;
     }
   }
 
-  @media screen and (max-width: 1100px) {
+
+  @media screen and (min-width: 540px) {
+   
+    
+    div{
+      input{
+      
+        max-width: 12rem;
+      }
+
+    }
+  }
+
+  @media screen and (min-width: 800px) {
     border: none;
     box-shadow: none;
     padding: 0;
+    
     div{
-      input{
-        display: none;
-      }
+     
 
       button{
         margin: 0;
