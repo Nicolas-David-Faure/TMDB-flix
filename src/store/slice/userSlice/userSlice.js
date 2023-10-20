@@ -2,7 +2,9 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   isLoggin: false,
-  userInfo: {}
+  userInfo: {},
+  showList: false,
+  animateList: false
 }
 
 export const userSlice = createSlice({
@@ -15,8 +17,17 @@ export const userSlice = createSlice({
     setUserInfo: (state, { payload })=>{
       state.userInfo = payload
       state.isLoggin = typeof payload === 'object' ? true : false;
+    },
+    setShowList: (state , { payload } )=>{
+      if(payload === false){
+        state.animateList = false
+      }
+      state.showList = payload
+    },
+    setAnimateList: (state , { payload } )=>{
+     state.animateList = !state.animateList
     }
   }
 })
 // Action creators are generated for each case reducer function
-export const { toggleIsLoggin , setUserInfo } = userSlice.actions
+export const { toggleIsLoggin , setUserInfo ,setShowList ,setAnimateList } = userSlice.actions

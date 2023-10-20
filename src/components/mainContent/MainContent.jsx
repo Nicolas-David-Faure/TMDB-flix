@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 //redux
 import { useSelector , useDispatch } from 'react-redux'
-import { setUserInfo } from '../../store/slice/userSlice/userSlice'
+import { setUserInfo , setShowList} from '../../store/slice/userSlice/userSlice'
 //axios
 import axios from 'axios'
 //styles
@@ -33,7 +33,10 @@ const MainContent = () => {
   },[])
   
   return (
-    <main onClick={()=>dispatch(handleClickOutSide())}  className='mainContent__main'>
+    <main onClick={()=>{
+     
+      dispatch(handleClickOutSide())
+      }}  className='mainContent__main'>
       {ifAsideOfFavorites && <AsidePersonalFavorites />}
       {userIsLogged ? <Movies /> : <Start /> }
     </main>

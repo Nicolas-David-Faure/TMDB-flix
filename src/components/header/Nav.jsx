@@ -6,7 +6,7 @@ import { Link , NavLink } from 'react-router-dom'
 //redux
 import { useDispatch, useSelector } from 'react-redux'
 import { togglePersonalAside } from '../../store/slice/favoritesSlice'
-import { setUserInfo } from '../../store/slice/userSlice/userSlice'
+import { setUserInfo , setShowList , setAnimateList} from '../../store/slice/userSlice/userSlice'
 //axios
 import axios from 'axios'
 //styles
@@ -15,24 +15,24 @@ import './sass/nav.scss'
 import userIcon from '../../assets/icons/user.svg'
 
 const Nav = () => {
-  const { isLoggin , userInfo } = useSelector(store => store.userSlice)
-  const [ showList, setShowList ] = useState(false)
-  const [ animateList , setAnimateList ] = useState(false)
+  const { isLoggin , userInfo , showList , animateList} = useSelector(store => store.userSlice)
 
-  const handleSetShowList =()=> {
-    setAnimateList(prev => !prev)
+  const dispatch = useDispatch()
+  const handleSetShowList =(e)=> {
+    dispatch(setAnimateList())
+
     if(showList){
       setTimeout(()=>{
-        setShowList(false)
+        dispatch(setShowList(false))
       }, 200)
     }
     else{
-      setShowList(true)
+      dispatch(setShowList(true))
     }
   }
 
   return (
-    <nav className='nav__main'>
+    <nav onClick={(e)=>e.stopPropagation()} className='nav__main'>
       {isLoggin ?
 
           <div className='nav__user'>
