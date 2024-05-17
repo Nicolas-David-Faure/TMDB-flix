@@ -45,13 +45,13 @@ const Nav = () => {
               className={( { isActive, isPending } ) =>
               isPending ? "pendingNav" : isActive ? "activeNav" : ""}
               to={'/auth_panel?type=register'}>
-                <button>Registrate</button>
+                <button className='nav__btn'>Registrate</button>
             </NavLink>    
             <NavLink 
               className={( { isActive, isPending } ) =>
               isPending ? "pendingNav" : isActive ? "activeNav" : ""}
               to={'/auth_panel?type=login'}>
-                <button>Ingresar</button>
+                <button className='nav__btn'>Ingresar</button>
             </NavLink>
 
           </>

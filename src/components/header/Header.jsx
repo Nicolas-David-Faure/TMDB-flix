@@ -31,15 +31,13 @@ const Header = () => {
             className={({ isActive, isPending }) =>
             isPending ? "pending header__link" : isActive ? "active header__link" : "header__link"}  
             to={'/browse/tv'} >TV</NavLink>
-        
-
       </div>
         }
       
-      </div>
       <div className='header__cont_nav_search'>
         {isLoggin && <SearchFilms /> }
         <Nav />
+      </div>
       </div>
 
     </header>

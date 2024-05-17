@@ -70,7 +70,7 @@ const InfoCard =({ film , isHover })=>{
   
 
   const displayFigcaption = {//If isHover then show me the figcaption element 
-    on:{display:'flex',y: -5 ,zIndex:20,opacity: 1
+    on:{display:'flex',y: -10 ,zIndex:20,opacity: 1
     },
     off:{y:-10,opacity: 0,display:'none'}
   }

@@ -64,7 +64,6 @@ const SearchFilms = () => {
   return (
     <form onClick={(e)=>e.stopPropagation()} className='searchFilms__main' onSubmit={ handleSubmit }>
       <div>
-           
             <motion.input
               initial='hidden'
               animate={!showInputSearch ? 'visible' : 'hidden'}
@@ -73,7 +72,8 @@ const SearchFilms = () => {
               name="searchFilm" 
               value={ filmName } 
               onChange={ handleChange } /> 
-            <img 
+         
+              <img 
               onClick={handleActiveInput}
               src={ searchIcon } 
               alt="search film" />
